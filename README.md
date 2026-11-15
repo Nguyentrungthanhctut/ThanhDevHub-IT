@@ -1,34 +1,31 @@
-# 🚀 IT Student Hub | Gemini AI PLUS & MAS Pro Ultimate
+# 🎓 IT Student Hub — Gemini AI PLUS & MAS Pro Ultimate
 
-<p align="center">
-  <b>Nền tảng tiện ích và tài nguyên hỗ trợ học tập, làm đồ án dành riêng cho sinh viên IT.</b>
-</p>
+**IT Student Hub** là cổng tiện ích dành cho sinh viên Công nghệ Thông tin, tích hợp dịch vụ cung cấp tài khoản **Gemini AI PLUS + 400GB Google Drive** và bộ công cụ kích hoạt bản quyền **Windows & Office (Microsoft Activation Scripts - MAS)** trực quan, hiện đại.
 
----
-
-## 🌟 Tính năng nổi bật
-
-### 1. Cửa hàng Gemini AI PLUS (Dành cho Coder)
-* **Gói Gemini AI PLUS 12 Tháng** giá ưu đãi đặc biệt dành cho sinh viên.
-* **400GB Google Drive riêng biệt** để thoải mái lưu trữ source code đồ án, project khủng và tài liệu học tập.
-* **Hỗ trợ Antigravity AI Code** giúp tự động sinh code, debug lỗi và tối ưu hóa thuật toán.
-
-### 2. Trung tâm Kích hoạt MAS Pro Ultimate
-* Tích hợp các phương thức kích hoạt bản quyền **Windows & Office** chính thống qua mã nguồn mở **MAS (Microsoft Activation Scripts)**.
-* Kiểm tra nhanh trạng thái bản quyền máy tính (`slmgr /xpr`).
-* Bộ lọc thông minh và trình tạo Custom Batch Script (`.bat`) trực tiếp trên giao diện web.
+![IT Student Hub Logo](./logo.jpg)
 
 ---
 
-## 🛠 Công nghệ sử dụng
-* **Frontend:** HTML5, Tailwind CSS, JavaScript (Vanilla).
-* **UI/UX:** Cyberpunk Dark Mode & Glassmorphism design, responsive toàn diện.
-* **Tích hợp:** API thời tiết thực tế, định vị IP/GPS và trình tạo file Batch tự động chạy quyền Administrator.
+## ✨ Tính năng nổi bật
+
+- **Giao diện Glassmorphism & Dark/Light Mode:** Thiết kế kính mờ hiện đại, chuyển đổi linh hoạt giữa chế độ Sáng/Tối và lưu trạng thái vào `localStorage`.
+- **Đa ngôn ngữ (VI / EN):** Hỗ trợ chuyển đổi nhanh giữa tiếng Việt và tiếng Anh chỉ với 1 cú nhấp chuột.
+- **Widget Thời tiết & Phần cứng thời gian thực:**
+  - Tự động nhận diện vị trí qua IP (`ipapi.co`) và cập nhật nhiệt độ, tốc độ gió thực tế (`Open-Meteo API`).
+  - Hiển thị hệ điều hành, trình duyệt, độ phân giải màn hình và trạng thái kết nối mạng của thiết bị.
+- **Hub Đăng ký Gemini AI PLUS:** Tích hợp đồng hồ đếm ngược ưu đãi, form đăng ký nhanh và bảng cập nhật đơn hàng trực tiếp.
+- **Trung tâm Kích hoạt Windows & Office (MAS Pro Ultimate):**
+  - Sao chép nhanh các câu lệnh kiểm tra bản quyền (`slmgr /xpr`, `slmgr.vbs /dli`) và lệnh kích hoạt PowerShell / CMD.
+  - **Trình tạo Custom Batch Script (`.bat`):** Cho phép chọn loại kích hoạt (HWID / KMS38), xem trước mã nguồn và tải trực tiếp file `.bat` tự động thực thi về máy.
 
 ---
 
-## 👤 Thông tin liên hệ & Hỗ trợ
-* **Quản lý / Phát triển:** NGUYEN TRUNG THANH (Thanhokiidol888)
-* **Facebook chính chủ:** [https://www.facebook.com/Thanhokiidol888](https://www.facebook.com/Thanhokiidol888?locale=vi_VN)
+## 📂 Cấu trúc thư mục
 
-© 2026 IT Student Hub. All rights reserved.
+Đảm bảo file `logo.jpg` nằm cùng thư mục với `index.html` để hiển thị đầy đủ logo và favicon:
+
+```text
+IT-Student-Hub/
+├── index.html      # Mã nguồn giao diện và logic xử lý chính
+├── logo.jpg        # Logo thương hiệu & Favicon của IT Student Hub
+└── README.md       # Tài liệu giới thiệu và hướng dẫn dự án
