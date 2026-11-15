@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MAS Pro Ultimate - Công cụ Kích hoạt Windows & Office Toàn diện</title>
+    <title>Gemini AI PLUS & MAS Pro Ultimate - Hub Tiện ích Sinh viên IT</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -66,24 +66,31 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #475569;
         }
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+        .animate-glow {
+            animation: pulseGlow 6s infinite ease-in-out;
+        }
     </style>
 </head>
 <body class="bg-darkBg text-slate-100 dark:bg-darkBg dark:text-slate-100 light:bg-slate-50 light:text-slate-900 min-h-screen flex flex-col justify-between selection:bg-blue-500 selection:text-white relative overflow-x-hidden transition-colors duration-300">
 
     <!-- Background Glow Effects -->
-    <div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-600/15 rounded-full blur-[120px] pointer-events-none"></div>
-    <div class="absolute top-1/3 right-1/4 w-[400px] h-[400px] bg-indigo-600/15 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-600/15 rounded-full blur-[120px] pointer-events-none animate-glow"></div>
+    <div class="absolute top-1/3 right-1/4 w-[400px] h-[400px] bg-indigo-600/15 rounded-full blur-[120px] pointer-events-none animate-glow"></div>
 
     <!-- Header -->
-    <header class="w-full py-4 px-4 sm:px-6 z-10 border-b border-slate-800/80 light:border-slate-200 glass sticky top-0 transition-colors duration-300">
+    <header class="w-full py-4 px-4 sm:px-6 z-20 border-b border-slate-800/80 light:border-slate-200 glass sticky top-0 transition-colors duration-300">
         <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
             <div class="flex items-center space-x-3">
                 <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center shadow-lg shadow-blue-500/30">
-                    <i class="fa-brands fa-windows text-white text-xl"></i>
+                    <i class="fa-solid fa-brain text-white text-xl"></i>
                 </div>
                 <div>
-                    <h1 class="text-base sm:text-lg font-bold tracking-tight">MAS Pro Ultimate</h1>
-                    <p class="text-xs text-slate-400 light:text-slate-600" data-i18n="subtitle">Microsoft Activation Scripts & Tiện ích Thông minh</p>
+                    <h1 class="text-base sm:text-lg font-bold tracking-tight">IT Student Hub</h1>
+                    <p class="text-xs text-slate-400 light:text-slate-600" data-i18n="subtitle">Gemini AI PLUS & MAS Pro Ultimate</p>
                 </div>
             </div>
             
@@ -142,7 +149,7 @@
                         <i class="fa-solid fa-laptop-code"></i>
                     </div>
                     <div>
-                        <h3 class="font-bold text-slate-100 light:text-slate-900 text-sm sm:text-base" id="osInfoText">Thiết bị Windows</h3>
+                        <h3 class="font-bold text-slate-100 light:text-slate-900 text-sm sm:text-base" id="osInfoText">Thiết bị sinh viên IT</h3>
                         <p class="text-xs text-slate-400 light:text-slate-600 mt-0.5" id="browserInfoText">Đang phân tích trình duyệt...</p>
                     </div>
                 </div>
@@ -153,283 +160,387 @@
             </div>
         </div>
 
-        <!-- License Status Checker Quick Bar -->
-        <div class="glass rounded-2xl p-5 mb-8 border border-slate-700/50 light:border-slate-300 shadow-xl flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div class="flex items-center space-x-3 text-left">
-                <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/25 flex items-center justify-center text-emerald-400 text-lg">
-                    <i class="fa-solid fa-shield-check"></i>
-                </div>
-                <div>
-                    <h3 class="font-bold text-sm sm:text-base text-slate-100 light:text-slate-900" data-i18n="checkTitle">Kiểm tra Trạng thái Bản quyền Máy tính</h3>
-                    <p class="text-xs text-slate-400 light:text-slate-600" data-i18n="checkDesc">Sao chép nhanh lệnh kiểm tra thời hạn bản quyền Windows hoặc Office hiện tại của bạn.</p>
-                </div>
-            </div>
-            <div class="flex items-center gap-2 w-full sm:w-auto">
-                <button onclick="copySpecificCommand('slmgr /xpr', this)" class="flex-1 sm:flex-none bg-slate-800 light:bg-slate-200 hover:bg-slate-700 light:hover:bg-slate-300 text-slate-200 light:text-slate-800 px-3.5 py-2 rounded-xl text-xs font-medium transition-all cursor-pointer flex items-center justify-center gap-1.5 border border-slate-700 light:border-slate-300">
-                    <i class="fa-solid fa-terminal text-blue-400"></i> <span>slmgr /xpr (Win Expiry)</span>
-                </button>
-                <button onclick="copySpecificCommand('cscript //nologo %windir%\\system32\\slmgr.vbs /dli', this)" class="flex-1 sm:flex-none bg-slate-800 light:bg-slate-200 hover:bg-slate-700 light:hover:bg-slate-300 text-slate-200 light:text-slate-800 px-3.5 py-2 rounded-xl text-xs font-medium transition-all cursor-pointer flex items-center justify-center gap-1.5 border border-slate-700 light:border-slate-300">
-                    <i class="fa-solid fa-file-lines text-emerald-400"></i> <span>slmgr.vbs /dli (Details)</span>
-                </button>
-            </div>
-        </div>
-
-        <!-- Hero Intro -->
-        <div class="text-center mb-6">
-            <h2 class="text-2xl sm:text-4xl font-extrabold text-white light:text-slate-900 mb-2 tracking-tight" data-i18n="heroTitle">Trung tâm Kích hoạt Bản quyền Windows & Office</h2>
-            <p class="text-slate-400 light:text-slate-600 text-xs sm:text-sm max-w-2xl mx-auto leading-relaxed" data-i18n="heroDesc">
-                Chọn phương thức kích hoạt ưa thích hoặc sử dụng trình tạo file lệnh tùy chỉnh bên dưới.
-            </p>
-        </div>
-
-        <!-- Smart Filter Tabs -->
-        <div class="flex items-center justify-center gap-2 mb-8 flex-wrap">
-            <button onclick="filterTab('all')" id="btn-tab-all" class="tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer bg-blue-600 text-white shadow-lg shadow-blue-600/25">
-                <i class="fa-solid fa-border-all mr-1.5"></i> <span data-i18n="tabAll">Tất cả phương thức</span>
+        <!-- Master Tab Navigation -->
+        <div class="flex items-center justify-center gap-3 mb-8 flex-wrap">
+            <button onclick="switchMasterTab('gemini')" id="btn-master-gemini" class="master-tab-btn px-6 py-3 rounded-2xl text-sm font-bold transition-all cursor-pointer bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-600/30 flex items-center gap-2">
+                <i class="fa-solid fa-brain"></i> <span data-i18n="tabGemini">Gemini AI PLUS (60k)</span>
             </button>
-            <button onclick="filterTab('windows')" id="btn-tab-windows" class="tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all cursor-pointer bg-slate-800 light:bg-slate-200 text-slate-300 light:text-slate-700 hover:bg-slate-700 light:hover:bg-slate-300">
-                <i class="fa-brands fa-windows mr-1.5 text-blue-400"></i> <span data-i18n="tabWin">Kích hoạt Windows</span>
-            </button>
-            <button onclick="filterTab('office')" id="btn-tab-office" class="tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all cursor-pointer bg-slate-800 light:bg-slate-200 text-slate-300 light:text-slate-700 hover:bg-slate-700 light:hover:bg-slate-300">
-                <i class="fa-solid fa-file-word mr-1.5 text-orange-400"></i> <span data-i18n="tabOff">Kích hoạt Office</span>
-            </button>
-            <button onclick="filterTab('tools')" id="btn-tab-tools" class="tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all cursor-pointer bg-slate-800 light:bg-slate-200 text-slate-300 light:text-slate-700 hover:bg-slate-700 light:hover:bg-slate-300">
-                <i class="fa-solid fa-wand-magic-sparkles mr-1.5 text-purple-400"></i> <span data-i18n="tabTools">Tiện ích & Tạo Script</span>
+            <button onclick="switchMasterTab('mas')" id="btn-master-mas" class="master-tab-btn px-6 py-3 rounded-2xl text-sm font-semibold transition-all cursor-pointer bg-slate-800 light:bg-slate-200 text-slate-300 light:text-slate-700 hover:bg-slate-700 light:hover:bg-slate-300 flex items-center gap-2">
+                <i class="fa-brands fa-windows"></i> <span data-i18n="tabMas">Kích hoạt Windows & Office (MAS)</span>
             </button>
         </div>
 
-        <!-- Methods Grid Container -->
-        <div id="methodsContainer" class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <!-- ================= SECTION 1: GEMINI AI PLUS STORE ================= -->
+        <div id="sectionGemini" class="space-y-8">
+            <!-- Hero Banner -->
+            <div class="glass rounded-3xl p-6 sm:p-10 border border-slate-700/60 light:border-slate-300 shadow-2xl relative overflow-hidden text-center">
+                <div class="absolute -right-20 -top-20 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute -left-20 -bottom-20 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
-            <!-- Method 1 -->
-            <div class="method-card glass rounded-2xl p-5 sm:p-6 border border-slate-700/50 light:border-slate-300 shadow-xl flex flex-col justify-between transition-all duration-300 hover:border-blue-500/40" data-category="windows">
-                <div>
-                    <div class="flex items-center justify-between mb-3">
-                        <span class="text-xs font-semibold uppercase tracking-wider bg-blue-500/10 text-blue-400 px-2.5 py-1 rounded-md border border-blue-500/25" data-i18n="m1Tag">Phương thức 1</span>
-                        <span class="text-xs text-slate-400 light:text-slate-600 flex items-center gap-1"><i class="fa-solid fa-bolt text-amber-400"></i> <span data-i18n="recommended">Khuyên dùng (Online PS)</span></span>
+                <div class="inline-flex items-center space-x-2 bg-blue-500/10 border border-blue-500/30 px-3 py-1 rounded-full text-blue-400 text-xs font-semibold mb-4">
+                    <i class="fa-solid fa-fire text-amber-400"></i>
+                    <span data-i18n="badgeSpecial">Ưu đãi độc quyền cho Sinh viên IT Cần Thơ & Toàn quốc</span>
+                </div>
+
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-white light:text-slate-900 tracking-tight mb-4">
+                    Gemini AI <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400">PLUS 12 Tháng</span> Chỉ 60K
+                </h2>
+                
+                <p class="text-slate-300 light:text-slate-700 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed mb-6" data-i18n="heroGeminiDesc">
+                    Combo tối thượng cho coder: Tài khoản AI cao cấp + <span class="text-blue-400 font-semibold">400GB Google Drive</span> lưu tài liệu, code, đồ án & hỗ trợ chạy <span class="text-purple-400 font-semibold">Antigravity</span> code bằng AI cực đỉnh!
+                </p>
+
+                <!-- Countdown Timer -->
+                <div class="flex items-center justify-center space-x-3 mb-8">
+                    <div class="bg-slate-900/90 light:bg-slate-200 border border-slate-700 light:border-slate-300 px-3 py-2 rounded-xl text-center min-w-[60px]">
+                        <span id="hours" class="font-mono font-bold text-lg text-blue-400">12</span>
+                        <div class="text-[9px] text-slate-400 uppercase">Giờ</div>
                     </div>
-                    <h3 class="font-bold text-slate-100 light:text-slate-900 text-base sm:text-lg mb-1">PowerShell (Truyền tải trực tiếp)</h3>
-                    <p class="text-xs text-slate-400 light:text-slate-600 mb-3" data-i18n="m1Desc">Lệnh tiêu chuẩn chạy trực tiếp qua PowerShell để mở menu MAS hoàn chỉnh từ get.activated.win.</p>
-                    
-                    <div class="bg-slate-950/80 light:bg-slate-900 rounded-xl border border-slate-800 light:border-slate-700 p-2.5 mb-4 flex items-center justify-between">
-                        <code class="code-font text-xs text-blue-400 overflow-x-auto whitespace-nowrap py-1 px-1">irm https://get.activated.win | iex</code>
-                        <button onclick="copySpecificCommand('irm https://get.activated.win | iex', this)" class="ml-2 bg-slate-800 hover:bg-slate-700 text-slate-200 px-3 py-1.5 rounded-lg text-xs font-medium transition-all shrink-0 cursor-pointer flex items-center gap-1.5">
-                            <i class="fa-regular fa-copy text-slate-400"></i> <span data-i18n="copyBtn">Chép</span>
+                    <span class="font-bold text-slate-500">:</span>
+                    <div class="bg-slate-900/90 light:bg-slate-200 border border-slate-700 light:border-slate-300 px-3 py-2 rounded-xl text-center min-w-[60px]">
+                        <span id="minutes" class="font-mono font-bold text-lg text-indigo-400">45</span>
+                        <div class="text-[9px] text-slate-400 uppercase">Phút</div>
+                    </div>
+                    <span class="font-bold text-slate-500">:</span>
+                    <div class="bg-slate-900/90 light:bg-slate-200 border border-slate-700 light:border-slate-300 px-3 py-2 rounded-xl text-center min-w-[60px]">
+                        <span id="seconds" class="font-mono font-bold text-lg text-purple-400">30</span>
+                        <div class="text-[9px] text-slate-400 uppercase">Giây</div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex flex-wrap items-center justify-center gap-4">
+                    <a href="https://www.facebook.com/Thanhokiidol888?locale=vi_VN" target="_blank" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold py-3.5 px-8 rounded-2xl text-sm transition-all shadow-xl shadow-blue-600/30 flex items-center gap-2.5 active:scale-95">
+                        <i class="fa-brands fa-facebook text-lg"></i>
+                        <span data-i18n="buyFbBtn">Nhắn tin Admin NGUYỄN TRUNG THÀNH mua ngay</span>
+                    </a>
+                    <a href="#orderSection" class="bg-slate-800 light:bg-slate-200 hover:bg-slate-700 light:hover:bg-slate-300 text-slate-200 light:text-slate-800 font-medium py-3.5 px-6 rounded-2xl text-sm transition-all border border-slate-700 light:border-slate-300 flex items-center gap-2">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span data-i18n="orderFormBtn">Đăng ký form nhanh</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Features Grid for IT Students -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Feature 1 -->
+                <div class="glass rounded-3xl p-6 border border-slate-700/50 light:border-slate-300 shadow-xl hover:border-blue-500/40 transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/25 flex items-center justify-center text-blue-400 text-xl mb-4">
+                        <i class="fa-solid fa-hard-drive"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-100 light:text-slate-900 text-lg mb-2" data-i18n="feat1Title">400GB Google Drive Riêng Biệt</h3>
+                    <p class="text-xs text-slate-400 light:text-slate-600 leading-relaxed" data-i18n="feat1Desc">
+                        Dung lượng cực khủng thoải mái lưu trữ source code đồ án tốt nghiệp, project khủng, video bài giảng và tài liệu học tập không lo hết dung lượng.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="glass rounded-3xl p-6 border border-slate-700/50 light:border-slate-300 shadow-xl hover:border-indigo-500/40 transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/25 flex items-center justify-center text-indigo-400 text-xl mb-4">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-100 light:text-slate-900 text-lg mb-2" data-i18n="feat2Title">Hỗ trợ Antigravity AI Code</h3>
+                    <p class="text-xs text-slate-400 light:text-slate-600 leading-relaxed" data-i18n="feat2Desc">
+                        Tích hợp công cụ Antigravity để code cùng AI, tự động sinh code, debug lỗi nhanh chóng, tối ưu hóa thuật toán cho các bài tập lớn và đồ án.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="glass rounded-3xl p-6 border border-slate-700/50 light:border-slate-300 shadow-xl hover:border-purple-500/40 transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-purple-500/10 border border-purple-500/25 flex items-center justify-center text-purple-400 text-xl mb-4">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-100 light:text-slate-900 text-lg mb-2" data-i18n="feat3Title">Bảo hành 12 Tháng Uy Tín</h3>
+                    <p class="text-xs text-slate-400 light:text-slate-600 leading-relaxed" data-i18n="feat3Desc">
+                        Cam kết hoạt động ổn định suốt 12 tháng. Hỗ trợ kỹ thuật 24/7 từ Admin Nguyễn Trung Thành qua Facebook cá nhân chính chủ.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Direct Order Form & Live Feed -->
+            <div id="orderSection" class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Order Form -->
+                <div class="glass rounded-3xl p-6 sm:p-8 border border-slate-700/60 light:border-slate-300 shadow-2xl">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/25 flex items-center justify-center text-blue-400 text-lg">
+                            <i class="fa-solid fa-ticket"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-100 light:text-slate-900 text-base sm:text-lg" data-i18n="formTitle">Đăng ký nhận tài khoản nhanh</h3>
+                            <p class="text-xs text-slate-400 light:text-slate-600" data-i18n="formDesc">Điền thông tin để Admin liên hệ chốt đơn & cấp tài khoản ngay lập tức.</p>
+                        </div>
+                    </div>
+
+                    <form onsubmit="handleOrderSubmit(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-medium text-slate-300 light:text-slate-700 mb-1" data-i18n="lblName">Họ và tên của bạn</label>
+                            <input type="text" id="orderName" required placeholder="VD: Nguyễn Văn A" class="w-full bg-slate-950/80 light:bg-slate-100 border border-slate-700 light:border-slate-300 rounded-xl px-4 py-2.5 text-xs text-slate-100 light:text-slate-900 focus:outline-none focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-slate-300 light:text-slate-700 mb-1" data-i18n="lblContact">Link Facebook hoặc Số điện thoại Zalo</label>
+                            <input type="text" id="orderContact" required placeholder="VD: facebook.com/profile.php hoặc 0912345678" class="w-full bg-slate-950/80 light:bg-slate-100 border border-slate-700 light:border-slate-300 rounded-xl px-4 py-2.5 text-xs text-slate-100 light:text-slate-900 focus:outline-none focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-slate-300 light:text-slate-700 mb-1" data-i18n="lblPackage">Gói lựa chọn</label>
+                            <select id="orderPackage" class="w-full bg-slate-950/80 light:bg-slate-100 border border-slate-700 light:border-slate-300 rounded-xl px-4 py-2.5 text-xs text-slate-100 light:text-slate-900 focus:outline-none focus:border-blue-500">
+                                <option value="Gemini AI PLUS 12Thang + 400GB Drive (60k)">Gemini AI PLUS 12 Tháng + 400GB Drive (60k)</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold py-3 px-4 rounded-xl text-xs sm:text-sm transition-all shadow-lg shadow-blue-600/30 cursor-pointer active:scale-95 flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            <span data-i18n="submitFormBtn">Gửi yêu cầu & Nhận thông tin thanh toán</span>
                         </button>
-                    </div>
-
-                    <!-- Step-by-step guide -->
-                    <div class="bg-slate-900/60 light:bg-slate-100 rounded-xl p-3 border border-slate-800/80 light:border-slate-200 mb-4 text-xs text-slate-300 light:text-slate-700 space-y-1.5">
-                        <p class="font-semibold text-blue-400"><i class="fa-solid fa-list-ol mr-1"></i> <span data-i18n="guideTitle">Hướng dẫn thực hiện:</span></p>
-                        <p>1. Nhấp chuột phải vào Start -> Chọn <span class="text-white light:text-slate-900 font-semibold">Terminal (Admin)</span>.</p>
-                        <p>2. Dán lệnh trên vào cửa sổ PowerShell và nhấn <span class="text-white light:text-slate-900 font-semibold">Enter</span>.</p>
-                        <p>3. Chọn phím số tương ứng để hoàn tất kích hoạt.</p>
-                    </div>
+                    </form>
                 </div>
 
-                <div class="pt-3 border-t border-slate-800/80 light:border-slate-200 flex items-center justify-between">
-                    <span class="text-xs text-slate-400 light:text-slate-600"><i class="fa-solid fa-file-code text-blue-400 mr-1"></i> <span data-i18n="batFileText">File Batch độc quyền:</span></span>
-                    <button onclick="downloadBatchMethod(1)" class="bg-blue-600 hover:bg-blue-500 text-white text-xs font-medium px-3 py-2 rounded-xl transition-all shadow-lg shadow-blue-600/20 active:scale-95 cursor-pointer flex items-center gap-1.5">
-                        <i class="fa-solid fa-download"></i> <span data-i18n="downloadBat1">Tải Script #1 (.bat)</span>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Method 2 -->
-            <div class="method-card glass rounded-2xl p-5 sm:p-6 border border-slate-700/50 light:border-slate-300 shadow-xl flex flex-col justify-between transition-all duration-300 hover:border-indigo-500/40" data-category="windows">
-                <div>
-                    <div class="flex items-center justify-between mb-3">
-                        <span class="text-xs font-semibold uppercase tracking-wider bg-indigo-500/10 text-indigo-400 px-2.5 py-1 rounded-md border border-indigo-500/25" data-i18n="m2Tag">Phương thức 2</span>
-                        <span class="text-xs text-slate-400 light:text-slate-600">Mirror URL (Massgrave)</span>
-                    </div>
-                    <h3 class="font-bold text-slate-100 light:text-slate-900 text-base sm:text-lg mb-1">PowerShell (Massgrave Domain)</h3>
-                    <p class="text-xs text-slate-400 light:text-slate-600 mb-3" data-i18n="m2Desc">Đường dẫn thay thế chính thức từ domain gốc massgrave.dev đảm bảo tính ổn định cao.</p>
-                    
-                    <div class="bg-slate-950/80 light:bg-slate-900 rounded-xl border border-slate-800 light:border-slate-700 p-2.5 mb-4 flex items-center justify-between">
-                        <code class="code-font text-xs text-indigo-400 overflow-x-auto whitespace-nowrap py-1 px-1">irm https://massgrave.dev/get | iex</code>
-                        <button onclick="copySpecificCommand('irm https://massgrave.dev/get | iex', this)" class="ml-2 bg-slate-800 hover:bg-slate-700 text-slate-200 px-3 py-1.5 rounded-lg text-xs font-medium transition-all shrink-0 cursor-pointer flex items-center gap-1.5">
-                            <i class="fa-regular fa-copy text-slate-400"></i> <span data-i18n="copyBtn">Chép</span>
-                        </button>
-                    </div>
-
-                    <!-- Step-by-step guide -->
-                    <div class="bg-slate-900/60 light:bg-slate-100 rounded-xl p-3 border border-slate-800/80 light:border-slate-200 mb-4 text-xs text-slate-300 light:text-slate-700 space-y-1.5">
-                        <p class="font-semibold text-indigo-400"><i class="fa-solid fa-list-ol mr-1"></i> <span data-i18n="guideTitle">Hướng dẫn thực hiện:</span></p>
-                        <p>1. Mở <span class="text-white light:text-slate-900 font-semibold">PowerShell</span> với quyền quản trị viên.</p>
-                        <p>2. Dán lệnh trên vào cửa sổ PowerShell và nhấn <span class="text-white light:text-slate-900 font-semibold">Enter</span>.</p>
-                        <p>3. Giao diện MAS sẽ khởi chạy, chọn cấu hình mong muốn.</p>
-                    </div>
-                </div>
-
-                <div class="pt-3 border-t border-slate-800/80 light:border-slate-200 flex items-center justify-between">
-                    <span class="text-xs text-slate-400 light:text-slate-600"><i class="fa-solid fa-file-code text-indigo-400 mr-1"></i> <span data-i18n="batFileText">File Batch độc quyền:</span></span>
-                    <button onclick="downloadBatchMethod(2)" class="bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-medium px-3 py-2 rounded-xl transition-all shadow-lg shadow-indigo-600/20 active:scale-95 cursor-pointer flex items-center gap-1.5">
-                        <i class="fa-solid fa-download"></i> <span data-i18n="downloadBat2">Tải Script #2 (.bat)</span>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Method 3 -->
-            <div class="method-card glass rounded-2xl p-5 sm:p-6 border border-slate-700/50 light:border-slate-300 shadow-xl flex flex-col justify-between transition-all duration-300 hover:border-emerald-500/40" data-category="office">
-                <div>
-                    <div class="flex items-center justify-between mb-3">
-                        <span class="text-xs font-semibold uppercase tracking-wider bg-emerald-500/10 text-emerald-400 px-2.5 py-1 rounded-md border border-emerald-500/25" data-i18n="m3Tag">Phương thức 3</span>
-                        <span class="text-xs text-slate-400 light:text-slate-600">Command Prompt (CMD)</span>
-                    </div>
-                    <h3 class="font-bold text-slate-100 light:text-slate-900 text-base sm:text-lg mb-1">CMD Script & Curl Download</h3>
-                    <p class="text-xs text-slate-400 light:text-slate-600 mb-3" data-i18n="m3Desc">Sử dụng công cụ cURL có sẵn trên Windows để tải file kịch bản và tự động kích hoạt qua PowerShell.</p>
-                    
-                    <div class="bg-slate-950/80 light:bg-slate-900 rounded-xl border border-slate-800 light:border-slate-700 p-2.5 mb-4 flex items-center justify-between">
-                        <code class="code-font text-xs text-emerald-400 overflow-x-auto whitespace-nowrap py-1 px-1">curl -L https://get.activated.win -o .\activate.ps1; powershell .\activate.ps1</code>
-                        <button onclick="copySpecificCommand('curl -L https://get.activated.win -o .\\activate.ps1; powershell .\\activate.ps1', this)" class="ml-2 bg-slate-800 hover:bg-slate-700 text-slate-200 px-3 py-1.5 rounded-lg text-xs font-medium transition-all shrink-0 cursor-pointer flex items-center gap-1.5">
-                            <i class="fa-regular fa-copy text-slate-400"></i> <span data-i18n="copyBtn">Chép</span>
-                        </button>
-                    </div>
-
-                    <!-- Step-by-step guide -->
-                    <div class="bg-slate-900/60 light:bg-slate-100 rounded-xl p-3 border border-slate-800/80 light:border-slate-200 mb-4 text-xs text-slate-300 light:text-slate-700 space-y-1.5">
-                        <p class="font-semibold text-emerald-400"><i class="fa-solid fa-list-ol mr-1"></i> <span data-i18n="guideTitle">Hướng dẫn thực hiện:</span></p>
-                        <p>1. Nhấn Windows, gõ <span class="text-white light:text-slate-900 font-semibold">cmd</span>, chọn Run as administrator.</p>
-                        <p>2. Dán lệnh cURL vào CMD và nhấn <span class="text-white light:text-slate-900 font-semibold">Enter</span>.</p>
-                        <p>3. Tập lệnh tự động xử lý cấu hình bản quyền Office/Windows.</p>
-                    </div>
-                </div>
-
-                <div class="pt-3 border-t border-slate-800/80 light:border-slate-200 flex items-center justify-between">
-                    <span class="text-xs text-slate-400 light:text-slate-600"><i class="fa-solid fa-file-code text-emerald-400 mr-1"></i> <span data-i18n="batFileText">File Batch độc quyền:</span></span>
-                    <button onclick="downloadBatchMethod(3)" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-medium px-3 py-2 rounded-xl transition-all shadow-lg shadow-emerald-600/20 active:scale-95 cursor-pointer flex items-center gap-1.5">
-                        <i class="fa-solid fa-download"></i> <span data-i18n="downloadBat3">Tải Script #3 (.bat)</span>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Method 4 -->
-            <div class="method-card glass rounded-2xl p-5 sm:p-6 border border-slate-700/50 light:border-slate-300 shadow-xl flex flex-col justify-between transition-all duration-300 hover:border-purple-500/40" data-category="office">
-                <div>
-                    <div class="flex items-center justify-between mb-3">
-                        <span class="text-xs font-semibold uppercase tracking-wider bg-purple-500/10 text-purple-400 px-2.5 py-1 rounded-md border border-purple-500/25" data-i18n="m4Tag">Phương thức 4</span>
-                        <span class="text-xs text-slate-400 light:text-slate-600">Slmgr / KMS Trực tiếp</span>
-                    </div>
-                    <h3 class="font-bold text-slate-100 light:text-slate-900 text-base sm:text-lg mb-1">VBScript Quản lý Bản quyền</h3>
-                    <p class="text-xs text-slate-400 light:text-slate-600 mb-3" data-i18n="m4Desc">Sử dụng công cụ quản lý giấy phép phần mềm gốc (Software Licensing Management Tool) trên Windows.</p>
-                    
-                    <div class="bg-slate-950/80 light:bg-slate-900 rounded-xl border border-slate-800 light:border-slate-700 p-2.5 mb-4 flex items-center justify-between">
-                        <code class="code-font text-xs text-purple-400 overflow-x-auto whitespace-nowrap py-1 px-1">cscript slmgr.vbs /ato</code>
-                        <button onclick="copySpecificCommand('cscript slmgr.vbs /ato', this)" class="ml-2 bg-slate-800 hover:bg-slate-700 text-slate-200 px-3 py-1.5 rounded-lg text-xs font-medium transition-all shrink-0 cursor-pointer flex items-center gap-1.5">
-                            <i class="fa-regular fa-copy text-slate-400"></i> <span data-i18n="copyBtn">Chép</span>
-                        </button>
-                    </div>
-
-                    <!-- Step-by-step guide -->
-                    <div class="bg-slate-900/60 light:bg-slate-100 rounded-xl p-3 border border-slate-800/80 light:border-slate-200 mb-4 text-xs text-slate-300 light:text-slate-700 space-y-1.5">
-                        <p class="font-semibold text-purple-400"><i class="fa-solid fa-list-ol mr-1"></i> <span data-i18n="guideTitle">Hướng dẫn thực hiện:</span></p>
-                        <p>1. Mở <span class="text-white light:text-slate-900 font-semibold">Command Prompt (Admin)</span>.</p>
-                        <p>2. Đổi KMS server nếu cần (vd: <code class="text-slate-200 light:text-slate-800">cscript slmgr.vbs /skms kms8.msguides.com</code>).</p>
-                        <p>3. Gõ lệnh trên và ấn <span class="text-white light:text-slate-900 font-semibold">Enter</span> để kích hoạt.</p>
-                    </div>
-                </div>
-
-                <div class="pt-3 border-t border-slate-800/80 light:border-slate-200 flex items-center justify-between">
-                    <span class="text-xs text-slate-400 light:text-slate-600"><i class="fa-solid fa-file-code text-purple-400 mr-1"></i> <span data-i18n="batFileText">File Batch độc quyền:</span></span>
-                    <button onclick="downloadBatchMethod(4)" class="bg-purple-600 hover:bg-purple-500 text-white text-xs font-medium px-3 py-2 rounded-xl transition-all shadow-lg shadow-purple-600/20 active:scale-95 cursor-pointer flex items-center gap-1.5">
-                        <i class="fa-solid fa-download"></i> <span data-i18n="downloadBat4">Tải Script #4 (.bat)</span>
-                    </button>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Custom Batch Script Generator Section (Tools Category) -->
-        <div id="customScriptSection" class="glass rounded-3xl p-6 sm:p-8 border border-slate-700/50 light:border-slate-300 shadow-2xl mb-8 hidden">
-            <div class="flex items-center space-x-3 mb-4">
-                <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/25 flex items-center justify-center text-purple-400 text-lg">
-                    <i class="fa-solid fa-wand-magic-sparkles"></i>
-                </div>
-                <div>
-                    <h3 class="font-bold text-slate-100 light:text-slate-900 text-base sm:text-lg" data-i18n="genTitle">Trình tạo Custom Batch Script trực tiếp trên Web</h3>
-                    <p class="text-xs text-slate-400 light:text-slate-600" data-i18n="genDesc">Tự chọn loại kích hoạt phù hợp và tải xuống file lệnh riêng biệt được tối ưu hóa tự động.</p>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
-                <label class="glass-hover border border-slate-700/60 light:border-slate-300 p-4 rounded-2xl cursor-pointer flex items-center space-x-3 transition-all">
-                    <input type="radio" name="customType" value="hwid" checked class="w-4 h-4 text-blue-600 accent-blue-600">
+                <!-- Live Social Proof & Recent Purchases -->
+                <div class="glass rounded-3xl p-6 sm:p-8 border border-slate-700/60 light:border-slate-300 shadow-2xl flex flex-col justify-between">
                     <div>
-                        <div class="font-semibold text-xs sm:text-sm text-white light:text-slate-900">Windows HWID (Vĩnh viễn)</div>
-                        <div class="text-[11px] text-slate-400 light:text-slate-600">Kích hoạt bản quyền số vĩnh viễn gắn liền với phần cứng máy.</div>
+                        <div class="flex items-center space-x-3 mb-6">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/25 flex items-center justify-center text-emerald-400 text-lg">
+                                <i class="fa-solid fa-bolt-lightning"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-slate-100 light:text-slate-900 text-base sm:text-lg" data-i18n="liveTitle">Đơn hàng mới được chốt</h3>
+                                <p class="text-xs text-slate-400 light:text-slate-600" data-i18n="liveDesc">Cập nhật liên tục các bạn sinh viên đã nhận tài khoản thành công.</p>
+                            </div>
+                        </div>
+
+                        <div id="liveFeedContainer" class="space-y-3">
+                            <div class="bg-slate-900/60 light:bg-slate-100 border border-slate-800 light:border-slate-200 p-3.5 rounded-2xl flex items-center justify-between text-xs">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold">H</div>
+                                    <div>
+                                        <div class="font-semibold text-slate-200 light:text-slate-800">Hoàng Minh (SV IT Cần Thơ)</div>
+                                        <div class="text-[10px] text-slate-400">Đã mua gói Gemini AI PLUS 12 tháng</div>
+                                    </div>
+                                </div>
+                                <span class="text-[10px] bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded border border-emerald-500/20">Thành công</span>
+                            </div>
+                            <div class="bg-slate-900/60 light:bg-slate-100 border border-slate-800 light:border-slate-200 p-3.5 rounded-2xl flex items-center justify-between text-xs">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold">T</div>
+                                    <div>
+                                        <div class="font-semibold text-slate-200 light:text-slate-800">Thanh Trúc (ĐH Công nghệ)</div>
+                                        <div class="text-[10px] text-slate-400">Đã mua gói kèm 400GB Drive</div>
+                                    </div>
+                                </div>
+                                <span class="text-[10px] bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded border border-emerald-500/20">Thành công</span>
+                            </div>
+                        </div>
                     </div>
-                </label>
-                <label class="glass-hover border border-slate-700/60 light:border-slate-300 p-4 rounded-2xl cursor-pointer flex items-center space-x-3 transition-all">
-                    <input type="radio" name="customType" value="kms38" class="w-4 h-4 text-blue-600 accent-blue-600">
+
+                    <div class="mt-6 pt-4 border-t border-slate-800 light:border-slate-200 text-center">
+                        <p class="text-xs text-slate-400 light:text-slate-600">Facebook Chính chủ Admin:</p>
+                        <a href="https://www.facebook.com/Thanhokiidol888?locale=vi_VN" target="_blank" class="text-blue-400 hover:underline font-semibold text-xs mt-0.5 inline-block">
+                            <i class="fa-brands fa-facebook mr-1"></i> NGUYEN TRUNG THANH (Thanhokiidol888)
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= SECTION 2: MAS PRO ULTIMATE (WINDOWS & OFFICE) ================= -->
+        <div id="sectionMas" class="space-y-8 hidden">
+            
+            <!-- License Status Checker Quick Bar -->
+            <div class="glass rounded-2xl p-5 border border-slate-700/50 light:border-slate-300 shadow-xl flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 text-left">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/25 flex items-center justify-center text-emerald-400 text-lg">
+                        <i class="fa-solid fa-shield-check"></i>
+                    </div>
                     <div>
-                        <div class="font-semibold text-xs sm:text-sm text-white light:text-slate-900">Windows/Office KMS38 (Đến năm 2038)</div>
-                        <div class="text-[11px] text-slate-400 light:text-slate-600">Kích hoạt gia hạn mô phỏng đến năm 2038 cho Windows Server/Enterprise.</div>
+                        <h3 class="font-bold text-sm sm:text-base text-slate-100 light:text-slate-900" data-i18n="checkTitle">Kiểm tra Trạng thái Bản quyền Máy tính</h3>
+                        <p class="text-xs text-slate-400 light:text-slate-600" data-i18n="checkDesc">Sao chép nhanh lệnh kiểm tra thời hạn bản quyền Windows hoặc Office hiện tại của bạn.</p>
                     </div>
-                </label>
+                </div>
+                <div class="flex items-center gap-2 w-full sm:w-auto">
+                    <button onclick="copySpecificCommand('slmgr /xpr', this)" class="flex-1 sm:flex-none bg-slate-800 light:bg-slate-200 hover:bg-slate-700 light:hover:bg-slate-300 text-slate-200 light:text-slate-800 px-3.5 py-2 rounded-xl text-xs font-medium transition-all cursor-pointer flex items-center justify-center gap-1.5 border border-slate-700 light:border-slate-300">
+                        <i class="fa-solid fa-terminal text-blue-400"></i> <span>slmgr /xpr</span>
+                    </button>
+                    <button onclick="copySpecificCommand('cscript //nologo %windir%\\system32\\slmgr.vbs /dli', this)" class="flex-1 sm:flex-none bg-slate-800 light:bg-slate-200 hover:bg-slate-700 light:hover:bg-slate-300 text-slate-200 light:text-slate-800 px-3.5 py-2 rounded-xl text-xs font-medium transition-all cursor-pointer flex items-center justify-center gap-1.5 border border-slate-700 light:border-slate-300">
+                        <i class="fa-solid fa-file-lines text-emerald-400"></i> <span>slmgr.vbs /dli</span>
+                    </button>
+                </div>
             </div>
 
-            <div class="bg-slate-950/80 light:bg-slate-900 rounded-2xl p-4 border border-slate-800 light:border-slate-700 mb-4">
-                <div class="text-xs font-semibold text-slate-400 mb-2 flex items-center justify-between">
-                    <span>Xem trước nội dung Script (.bat):</span>
-                    <button onclick="copyCustomPreview()" class="text-blue-400 hover:underline text-[11px]"><i class="fa-regular fa-copy mr-1"></i> Sao chép mã</button>
+            <!-- Hero Intro -->
+            <div class="text-center mb-6">
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-white light:text-slate-900 mb-2 tracking-tight" data-i18n="heroTitle">Trung tâm Kích hoạt Bản quyền Windows & Office</h2>
+                <p class="text-slate-400 light:text-slate-600 text-xs sm:text-sm max-w-2xl mx-auto leading-relaxed" data-i18n="heroDesc">
+                    Chọn phương thức kích hoạt ưa thích hoặc sử dụng trình tạo file lệnh tùy chỉnh bên dưới.
+                </p>
+            </div>
+
+            <!-- Smart Filter Tabs -->
+            <div class="flex items-center justify-center gap-2 mb-8 flex-wrap">
+                <button onclick="filterTab('all')" id="btn-tab-all" class="tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer bg-blue-600 text-white shadow-lg shadow-blue-600/25">
+                    <i class="fa-solid fa-border-all mr-1.5"></i> <span data-i18n="tabAll">Tất cả phương thức</span>
+                </button>
+                <button onclick="filterTab('windows')" id="btn-tab-windows" class="tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all cursor-pointer bg-slate-800 light:bg-slate-200 text-slate-300 light:text-slate-700 hover:bg-slate-700 light:hover:bg-slate-300">
+                    <i class="fa-brands fa-windows mr-1.5 text-blue-400"></i> <span data-i18n="tabWin">Kích hoạt Windows</span>
+                </button>
+                <button onclick="filterTab('office')" id="btn-tab-office" class="tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all cursor-pointer bg-slate-800 light:bg-slate-200 text-slate-300 light:text-slate-700 hover:bg-slate-700 light:hover:bg-slate-300">
+                    <i class="fa-solid fa-file-word mr-1.5 text-orange-400"></i> <span data-i18n="tabOff">Kích hoạt Office</span>
+                </button>
+                <button onclick="filterTab('tools')" id="btn-tab-tools" class="tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all cursor-pointer bg-slate-800 light:bg-slate-200 text-slate-300 light:text-slate-700 hover:bg-slate-700 light:hover:bg-slate-300">
+                    <i class="fa-solid fa-wand-magic-sparkles mr-1.5 text-purple-400"></i> <span data-i18n="tabTools">Tiện ích & Tạo Script</span>
+                </button>
+            </div>
+
+            <!-- Methods Grid Container -->
+            <div id="methodsContainer" class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+
+                <!-- Method 1 -->
+                <div class="method-card glass rounded-2xl p-5 sm:p-6 border border-slate-700/50 light:border-slate-300 shadow-xl flex flex-col justify-between transition-all duration-300 hover:border-blue-500/40" data-category="windows">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-semibold uppercase tracking-wider bg-blue-500/10 text-blue-400 px-2.5 py-1 rounded-md border border-blue-500/25" data-i18n="m1Tag">Phương thức 1</span>
+                            <span class="text-xs text-slate-400 light:text-slate-600 flex items-center gap-1"><i class="fa-solid fa-bolt text-amber-400"></i> <span data-i18n="recommended">Khuyên dùng (Online PS)</span></span>
+                        </div>
+                        <h3 class="font-bold text-slate-100 light:text-slate-900 text-base sm:text-lg mb-1">PowerShell (Truyền tải trực tiếp)</h3>
+                        <p class="text-xs text-slate-400 light:text-slate-600 mb-3" data-i18n="m1Desc">Lệnh tiêu chuẩn chạy trực tiếp qua PowerShell để mở menu MAS hoàn chỉnh từ get.activated.win.</p>
+                        
+                        <div class="bg-slate-950/80 light:bg-slate-900 rounded-xl border border-slate-800 light:border-slate-700 p-2.5 mb-4 flex items-center justify-between">
+                            <code class="code-font text-xs text-blue-400 overflow-x-auto whitespace-nowrap py-1 px-1">irm https://get.activated.win | iex</code>
+                            <button onclick="copySpecificCommand('irm https://get.activated.win | iex', this)" class="ml-2 bg-slate-800 hover:bg-slate-700 text-slate-200 px-3 py-1.5 rounded-lg text-xs font-medium transition-all shrink-0 cursor-pointer flex items-center gap-1.5">
+                                <i class="fa-regular fa-copy text-slate-400"></i> <span data-i18n="copyBtn">Chép</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="pt-3 border-t border-slate-800/80 light:border-slate-200 flex items-center justify-between">
+                        <span class="text-xs text-slate-400 light:text-slate-600"><i class="fa-solid fa-file-code text-blue-400 mr-1"></i> <span data-i18n="batFileText">File Batch độc quyền:</span></span>
+                        <button onclick="downloadBatchMethod(1)" class="bg-blue-600 hover:bg-blue-500 text-white text-xs font-medium px-3 py-2 rounded-xl transition-all shadow-lg shadow-blue-600/20 active:scale-95 cursor-pointer flex items-center gap-1.5">
+                            <i class="fa-solid fa-download"></i> <span data-i18n="downloadBat1">Tải Script #1 (.bat)</span>
+                        </button>
+                    </div>
                 </div>
-                <pre id="scriptPreviewCode" class="code-font text-xs text-purple-300 overflow-x-auto p-2 max-h-40">@echo off
+
+                <!-- Method 2 -->
+                <div class="method-card glass rounded-2xl p-5 sm:p-6 border border-slate-700/50 light:border-slate-300 shadow-xl flex flex-col justify-between transition-all duration-300 hover:border-indigo-500/40" data-category="windows">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-semibold uppercase tracking-wider bg-indigo-500/10 text-indigo-400 px-2.5 py-1 rounded-md border border-indigo-500/25" data-i18n="m2Tag">Phương thức 2</span>
+                            <span class="text-xs text-slate-400 light:text-slate-600">Mirror URL (Massgrave)</span>
+                        </div>
+                        <h3 class="font-bold text-slate-100 light:text-slate-900 text-base sm:text-lg mb-1">PowerShell (Massgrave Domain)</h3>
+                        <p class="text-xs text-slate-400 light:text-slate-600 mb-3" data-i18n="m2Desc">Đường dẫn thay thế chính thức từ domain gốc massgrave.dev đảm bảo tính ổn định cao.</p>
+                        
+                        <div class="bg-slate-950/80 light:bg-slate-900 rounded-xl border border-slate-800 light:border-slate-700 p-2.5 mb-4 flex items-center justify-between">
+                            <code class="code-font text-xs text-indigo-400 overflow-x-auto whitespace-nowrap py-1 px-1">irm https://massgrave.dev/get | iex</code>
+                            <button onclick="copySpecificCommand('irm https://massgrave.dev/get | iex', this)" class="ml-2 bg-slate-800 hover:bg-slate-700 text-slate-200 px-3 py-1.5 rounded-lg text-xs font-medium transition-all shrink-0 cursor-pointer flex items-center gap-1.5">
+                                <i class="fa-regular fa-copy text-slate-400"></i> <span data-i18n="copyBtn">Chép</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="pt-3 border-t border-slate-800/80 light:border-slate-200 flex items-center justify-between">
+                        <span class="text-xs text-slate-400 light:text-slate-600"><i class="fa-solid fa-file-code text-indigo-400 mr-1"></i> <span data-i18n="batFileText">File Batch độc quyền:</span></span>
+                        <button onclick="downloadBatchMethod(2)" class="bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-medium px-3 py-2 rounded-xl transition-all shadow-lg shadow-indigo-600/20 active:scale-95 cursor-pointer flex items-center gap-1.5">
+                            <i class="fa-solid fa-download"></i> <span data-i18n="downloadBat2">Tải Script #2 (.bat)</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Method 3 -->
+                <div class="method-card glass rounded-2xl p-5 sm:p-6 border border-slate-700/50 light:border-slate-300 shadow-xl flex flex-col justify-between transition-all duration-300 hover:border-emerald-500/40" data-category="office">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-semibold uppercase tracking-wider bg-emerald-500/10 text-emerald-400 px-2.5 py-1 rounded-md border border-emerald-500/25" data-i18n="m3Tag">Phương thức 3</span>
+                            <span class="text-xs text-slate-400 light:text-slate-600">Command Prompt (CMD)</span>
+                        </div>
+                        <h3 class="font-bold text-slate-100 light:text-slate-900 text-base sm:text-lg mb-1">CMD Script & Curl Download</h3>
+                        <p class="text-xs text-slate-400 light:text-slate-600 mb-3" data-i18n="m3Desc">Sử dụng công cụ cURL có sẵn trên Windows để tải file kịch bản và tự động kích hoạt qua PowerShell.</p>
+                        
+                        <div class="bg-slate-950/80 light:bg-slate-900 rounded-xl border border-slate-800 light:border-slate-700 p-2.5 mb-4 flex items-center justify-between">
+                            <code class="code-font text-xs text-emerald-400 overflow-x-auto whitespace-nowrap py-1 px-1">curl -L https://get.activated.win -o .\activate.ps1; powershell .\activate.ps1</code>
+                            <button onclick="copySpecificCommand('curl -L https://get.activated.win -o .\\activate.ps1; powershell .\\activate.ps1', this)" class="ml-2 bg-slate-800 hover:bg-slate-700 text-slate-200 px-3 py-1.5 rounded-lg text-xs font-medium transition-all shrink-0 cursor-pointer flex items-center gap-1.5">
+                                <i class="fa-regular fa-copy text-slate-400"></i> <span data-i18n="copyBtn">Chép</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="pt-3 border-t border-slate-800/80 light:border-slate-200 flex items-center justify-between">
+                        <span class="text-xs text-slate-400 light:text-slate-600"><i class="fa-solid fa-file-code text-emerald-400 mr-1"></i> <span data-i18n="batFileText">File Batch độc quyền:</span></span>
+                        <button onclick="downloadBatchMethod(3)" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-medium px-3 py-2 rounded-xl transition-all shadow-lg shadow-emerald-600/20 active:scale-95 cursor-pointer flex items-center gap-1.5">
+                            <i class="fa-solid fa-download"></i> <span data-i18n="downloadBat3">Tải Script #3 (.bat)</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Method 4 -->
+                <div class="method-card glass rounded-2xl p-5 sm:p-6 border border-slate-700/50 light:border-slate-300 shadow-xl flex flex-col justify-between transition-all duration-300 hover:border-purple-500/40" data-category="office">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-semibold uppercase tracking-wider bg-purple-500/10 text-purple-400 px-2.5 py-1 rounded-md border border-purple-500/25" data-i18n="m4Tag">Phương thức 4</span>
+                            <span class="text-xs text-slate-400 light:text-slate-600">Slmgr / KMS Trực tiếp</span>
+                        </div>
+                        <h3 class="font-bold text-slate-100 light:text-slate-900 text-base sm:text-lg mb-1">VBScript Quản lý Bản quyền</h3>
+                        <p class="text-xs text-slate-400 light:text-slate-600 mb-3" data-i18n="m4Desc">Sử dụng công cụ quản lý giấy phép phần mềm gốc (Software Licensing Management Tool) trên Windows.</p>
+                        
+                        <div class="bg-slate-950/80 light:bg-slate-900 rounded-xl border border-slate-800 light:border-slate-700 p-2.5 mb-4 flex items-center justify-between">
+                            <code class="code-font text-xs text-purple-400 overflow-x-auto whitespace-nowrap py-1 px-1">cscript slmgr.vbs /ato</code>
+                            <button onclick="copySpecificCommand('cscript slmgr.vbs /ato', this)" class="ml-2 bg-slate-800 hover:bg-slate-700 text-slate-200 px-3 py-1.5 rounded-lg text-xs font-medium transition-all shrink-0 cursor-pointer flex items-center gap-1.5">
+                                <i class="fa-regular fa-copy text-slate-400"></i> <span data-i18n="copyBtn">Chép</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="pt-3 border-t border-slate-800/80 light:border-slate-200 flex items-center justify-between">
+                        <span class="text-xs text-slate-400 light:text-slate-600"><i class="fa-solid fa-file-code text-purple-400 mr-1"></i> <span data-i18n="batFileText">File Batch độc quyền:</span></span>
+                        <button onclick="downloadBatchMethod(4)" class="bg-purple-600 hover:bg-purple-500 text-white text-xs font-medium px-3 py-2 rounded-xl transition-all shadow-lg shadow-purple-600/20 active:scale-95 cursor-pointer flex items-center gap-1.5">
+                            <i class="fa-solid fa-download"></i> <span data-i18n="downloadBat4">Tải Script #4 (.bat)</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Custom Batch Script Generator Section (Tools Category) -->
+            <div id="customScriptSection" class="glass rounded-3xl p-6 sm:p-8 border border-slate-700/50 light:border-slate-300 shadow-2xl mb-8 hidden">
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/25 flex items-center justify-center text-purple-400 text-lg">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-100 light:text-slate-900 text-base sm:text-lg" data-i18n="genTitle">Trình tạo Custom Batch Script trực tiếp trên Web</h3>
+                        <p class="text-xs text-slate-400 light:text-slate-600" data-i18n="genDesc">Tự chọn loại kích hoạt phù hợp và tải xuống file lệnh riêng biệt được tối ưu hóa tự động.</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
+                    <label class="glass-hover border border-slate-700/60 light:border-slate-300 p-4 rounded-2xl cursor-pointer flex items-center space-x-3 transition-all">
+                        <input type="radio" name="customType" value="hwid" checked class="w-4 h-4 text-blue-600 accent-blue-600">
+                        <div>
+                            <div class="font-semibold text-xs sm:text-sm text-white light:text-slate-900">Windows HWID (Vĩnh viễn)</div>
+                            <div class="text-[11px] text-slate-400 light:text-slate-600">Kích hoạt bản quyền số vĩnh viễn gắn liền với phần cứng máy.</div>
+                        </div>
+                    </label>
+                    <label class="glass-hover border border-slate-700/60 light:border-slate-300 p-4 rounded-2xl cursor-pointer flex items-center space-x-3 transition-all">
+                        <input type="radio" name="customType" value="kms38" class="w-4 h-4 text-blue-600 accent-blue-600">
+                        <div>
+                            <div class="font-semibold text-xs sm:text-sm text-white light:text-slate-900">Windows/Office KMS38 (Đến năm 2038)</div>
+                            <div class="text-[11px] text-slate-400 light:text-slate-600">Kích hoạt gia hạn mô phỏng đến năm 2038 cho Windows Server/Enterprise.</div>
+                        </div>
+                    </label>
+                </div>
+
+                <div class="bg-slate-950/80 light:bg-slate-900 rounded-2xl p-4 border border-slate-800 light:border-slate-700 mb-4">
+                    <div class="text-xs font-semibold text-slate-400 mb-2 flex items-center justify-between">
+                        <span>Xem trước nội dung Script (.bat):</span>
+                        <button onclick="copyCustomPreview()" class="text-blue-400 hover:underline text-[11px]"><i class="fa-regular fa-copy mr-1"></i> Sao chép mã</button>
+                    </div>
+                    <pre id="scriptPreviewCode" class="code-font text-xs text-purple-300 overflow-x-auto p-2 max-h-40">@echo off
 title MAS Custom Script - HWID Activation
 powershell -Command "irm https://get.activated.win | iex"
 pause</pre>
-            </div>
-
-            <button onclick="generateCustomBatchFile()" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-semibold py-3 px-4 rounded-xl text-xs sm:text-sm transition-all shadow-lg shadow-purple-600/30 cursor-pointer active:scale-95 flex items-center justify-center gap-2">
-                <i class="fa-solid fa-download"></i>
-                <span data-i18n="genBtnDownload">Tải xuống File Batch Tùy chỉnh (.bat)</span>
-            </button>
-        </div>
-
-        <!-- Troubleshooting FAQ Accordion Section -->
-        <div class="glass rounded-3xl p-6 sm:p-8 border border-slate-700/50 light:border-slate-300 shadow-2xl mb-8">
-            <div class="flex items-center space-x-3 mb-6">
-                <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/25 flex items-center justify-center text-amber-400 text-lg">
-                    <i class="fa-solid fa-circle-question"></i>
-                </div>
-                <div>
-                    <h3 class="font-bold text-slate-100 light:text-slate-900 text-base sm:text-lg" data-i18n="faqTitle">Khắc phục sự cố & Hỏi đáp (FAQ)</h3>
-                    <p class="text-xs text-slate-400 light:text-slate-600" data-i18n="faqDesc">Tổng hợp cách xử lý các lỗi thường gặp trong quá trình kích hoạt.</p>
-                </div>
-            </div>
-
-            <div class="space-y-3">
-                <!-- FAQ Item 1 -->
-                <div class="border border-slate-700/60 light:border-slate-300 rounded-2xl overflow-hidden bg-slate-900/40 light:bg-slate-100 transition-all">
-                    <button onclick="toggleFaq(1)" class="w-full p-4 text-left font-semibold text-xs sm:text-sm text-slate-200 light:text-slate-800 flex items-center justify-between cursor-pointer">
-                        <span data-i18n="faq1Q">1. Windows Defender hoặc phần mềm diệt virus chặn file .bat hoặc lệnh PowerShell?</span>
-                        <i id="faqIcon1" class="fa-solid fa-chevron-down text-slate-400 transition-transform"></i>
-                    </button>
-                    <div id="faqAns1" class="hidden px-4 pb-4 text-xs text-slate-300 light:text-slate-700 space-y-1.5 border-t border-slate-800/80 light:border-slate-200 pt-3">
-                        <p data-i18n="faq1A">Nguyên nhân do Windows Defender nhận diện nhầm các lệnh tự động hóa hệ thống. Đây là mã nguồn mở hoàn toàn minh bạch. Bạn chỉ cần tạm tắt Windows Security trong giây lát hoặc thêm ngoại lệ (Exclusion) cho file tải về trước khi chạy với quyền Administrator.</p>
-                    </div>
                 </div>
 
-                <!-- FAQ Item 2 -->
-                <div class="border border-slate-700/60 light:border-slate-300 rounded-2xl overflow-hidden bg-slate-900/40 light:bg-slate-100 transition-all">
-                    <button onclick="toggleFaq(2)" class="w-full p-4 text-left font-semibold text-xs sm:text-sm text-slate-200 light:text-slate-800 flex items-center justify-between cursor-pointer">
-                        <span data-i18n="faq2Q">2. Lỗi không kết nối được Server KMS hoặc mã lỗi 0x80070005 khi kích hoạt Office?</span>
-                        <i id="faqIcon2" class="fa-solid fa-chevron-down text-slate-400 transition-transform"></i>
-                    </button>
-                    <div id="faqAns2" class="hidden px-4 pb-4 text-xs text-slate-300 light:text-slate-700 space-y-1.5 border-t border-slate-800/80 light:border-slate-200 pt-3">
-                        <p data-i18n="faq2A">Lỗi 0x80070005 thường xuất hiện do bạn chưa chạy CMD/PowerShell dưới quyền Administrator. Hãy chắc chắn nhấp chuột phải chọn "Run as administrator". Đồng thời kiểm tra lại kết nối mạng Internet hoặc tường lửa công ty.</p>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 3 -->
-                <div class="border border-slate-700/60 light:border-slate-300 rounded-2xl overflow-hidden bg-slate-900/40 light:bg-slate-100 transition-all">
-                    <button onclick="toggleFaq(3)" class="w-full p-4 text-left font-semibold text-xs sm:text-sm text-slate-200 light:text-slate-800 flex items-center justify-between cursor-pointer">
-                        <span data-i18n="faq3Q">3. Sau khi kích hoạt thành công, có cần giữ lại file script không?</span>
-                        <i id="faqIcon3" class="fa-solid fa-chevron-down text-slate-400 transition-transform"></i>
-                    </button>
-                    <div id="faqAns3" class="hidden px-4 pb-4 text-xs text-slate-300 light:text-slate-700 space-y-1.5 border-t border-slate-800/80 light:border-slate-200 pt-3">
-                        <p data-i18n="faq3A">Không cần thiết. Đối với phương thức HWID (Digital License), bản quyền đã được lưu vĩnh viễn trên máy chủ Microsoft ngay cả khi bạn cài lại Windows. Các file batch do hệ thống tạo ra cũng tự động xóa sau khi chạy xong để đảm bảo bảo mật tuyệt đối.</p>
-                    </div>
-                </div>
+                <button onclick="generateCustomBatchFile()" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-semibold py-3 px-4 rounded-xl text-xs sm:text-sm transition-all shadow-lg shadow-purple-600/30 cursor-pointer active:scale-95 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-download"></i>
+                    <span data-i18n="genBtnDownload">Tải xuống File Batch Tùy chỉnh (.bat)</span>
+                </button>
             </div>
         </div>
 
@@ -440,41 +551,16 @@ pause</pre>
         <div class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs">
             <i class="fa-solid fa-check"></i>
         </div>
-        <span id="toastMessage" class="text-xs font-medium">Đã sao chép lệnh thành công!</span>
-    </div>
-
-    <!-- Welcome Modal Popup -->
-    <div id="welcomeModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md flex items-center justify-center z-50 p-4 transition-opacity duration-300">
-        <div class="glass max-w-md w-full rounded-3xl p-6 sm:p-8 border border-slate-700 light:border-slate-300 shadow-2xl relative animate-in fade-in zoom-in duration-300">
-            <div class="w-12 h-12 rounded-2xl bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400 text-2xl mb-4 shadow-inner">
-                <i class="fa-solid fa-shield-halved"></i>
-            </div>
-            <h3 class="text-lg sm:text-xl font-bold text-white light:text-slate-900 mb-2" data-i18n="modalTitle">Chào mừng đến với MAS Pro Ultimate</h3>
-            <p class="text-xs sm:text-sm text-slate-300 light:text-slate-700 leading-relaxed mb-5" data-i18n="modalDesc">
-                Công cụ hỗ trợ kích hoạt bản quyền chính thống sử dụng mã nguồn mở MAS (Microsoft Activation Scripts). Vui lòng chạy tập lệnh dưới quyền <span class="text-blue-400 font-semibold">Administrator</span>.
-            </p>
-            <div class="bg-slate-900/80 light:bg-slate-200 border border-slate-800 light:border-slate-300 rounded-2xl p-3.5 mb-6 text-xs text-slate-400 light:text-slate-700 space-y-1.5">
-                <div class="flex items-center space-x-2 text-amber-500 font-medium">
-                    <i class="fa-solid fa-triangle-exclamation"></i>
-                    <span data-i18n="modalNoteTitle">Lưu ý quan trọng:</span>
-                </div>
-                <p data-i18n="modalNote1">- Tạm thời tắt phần mềm diệt virus nếu hệ thống nhầm lẫn file batch.</p>
-                <p data-i18n="modalNote2">- Tất cả mã lệnh đều minh bạch, an toàn và chuẩn xác quốc tế.</p>
-            </div>
-            <button onclick="closeWelcomeModal()" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold py-3 px-4 rounded-xl text-xs sm:text-sm transition-all shadow-lg shadow-blue-600/30 cursor-pointer active:scale-95 flex items-center justify-center gap-2">
-                <span data-i18n="modalBtn">Tôi đã hiểu, bắt đầu ngay</span>
-                <i class="fa-solid fa-arrow-right"></i>
-            </button>
-        </div>
+        <span id="toastMessage" class="text-xs font-medium">Đã xử lý thành công!</span>
     </div>
 
     <!-- Footer -->
     <footer class="w-full py-6 px-6 text-center text-xs text-slate-400 light:text-slate-600 border-t border-slate-800/80 light:border-slate-200 glass mt-12 transition-colors duration-300">
         <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
-            <p data-i18n="footerSub">Trung tâm Kích hoạt Bản quyền Windows & Office thông minh • Tích hợp thông tin thời tiết & phần cứng thực tế.</p>
+            <p data-i18n="footerSub">Hub Sinh viên IT • Gemini AI PLUS & MAS Pro Ultimate • Tích hợp thông tin thời tiết & phần cứng thực tế.</p>
             <div class="text-slate-400 light:text-slate-600 text-right">
-                <p class="font-semibold text-slate-300 light:text-slate-800">© 2026 Thiết kế bởi <span class="text-blue-400">Cần Thơ Team</span></p>
-                <p class="text-[11px] text-slate-500 light:text-slate-500" data-i18n="footerDate">Ngày công khai: 14/06/2026 • Bảo lưu mọi quyền.</p>
+                <p class="font-semibold text-slate-300 light:text-slate-800">© 2026 Quản lý bởi <span class="text-blue-400">NGUYEN TRUNG THANH</span></p>
+                <p class="text-[11px] text-slate-500 light:text-slate-500" data-i18n="footerDate">Hỗ trợ Zalo/FB: Thanhokiidol888 • Bảo lưu mọi quyền.</p>
             </div>
         </div>
     </footer>
@@ -484,8 +570,28 @@ pause</pre>
         // Multi-language Dictionary
         const translations = {
             vi: {
-                subtitle: "Microsoft Activation Scripts & Tiện ích Thông minh",
+                subtitle: "Gemini AI PLUS & MAS Pro Ultimate",
                 online: "Online",
+                tabGemini: "Gemini AI PLUS (60k)",
+                tabMas: "Kích hoạt Windows & Office (MAS)",
+                badgeSpecial: "Ưu đãi độc quyền cho Sinh viên IT Cần Thơ & Toàn quốc",
+                heroGeminiDesc: "Combo tối thượng cho coder: Tài khoản AI cao cấp + 400GB Google Drive lưu tài liệu, code, đồ án & hỗ trợ chạy Antigravity code bằng AI cực đỉnh!",
+                buyFbBtn: "Nhắn tin Admin NGUYỄN TRUNG THÀNH mua ngay",
+                orderFormBtn: "Đăng ký form nhanh",
+                feat1Title: "400GB Google Drive Riêng Biệt",
+                feat1Desc: "Dung lượng cực khủng thoải mái lưu trữ source code đồ án tốt nghiệp, project khủng, video bài giảng và tài liệu học tập không lo hết dung lượng.",
+                feat2Title: "Hỗ trợ Antigravity AI Code",
+                feat2Desc: "Tích hợp công cụ Antigravity để code cùng AI, tự động sinh code, debug lỗi nhanh chóng, tối ưu hóa thuật toán cho các bài tập lớn và đồ án.",
+                feat3Title: "Bảo hành 12 Tháng Uy Tín",
+                feat3Desc: "Cam kết hoạt động ổn định suốt 12 tháng. Hỗ trợ kỹ thuật 24/7 từ Admin Nguyễn Trung Thành qua Facebook cá nhân chính chủ.",
+                formTitle: "Đăng ký nhận tài khoản nhanh",
+                formDesc: "Điền thông tin để Admin liên hệ chốt đơn & cấp tài khoản ngay lập tức.",
+                lblName: "Họ và tên của bạn",
+                lblContact: "Link Facebook hoặc Số điện thoại Zalo",
+                lblPackage: "Gói lựa chọn",
+                submitFormBtn: "Gửi yêu cầu & Nhận thông tin thanh toán",
+                liveTitle: "Đơn hàng mới được chốt",
+                liveDesc: "Cập nhật liên tục các bạn sinh viên đã nhận tài khoản thành công.",
                 checkTitle: "Kiểm tra Trạng thái Bản quyền Máy tính",
                 checkDesc: "Sao chép nhanh lệnh kiểm tra thời hạn bản quyền Windows hoặc Office hiện tại của bạn.",
                 heroTitle: "Trung tâm Kích hoạt Bản quyền Windows & Office",
@@ -498,7 +604,6 @@ pause</pre>
                 recommended: "Khuyên dùng (Online PS)",
                 m1Desc: "Lệnh tiêu chuẩn chạy trực tiếp qua PowerShell để mở menu MAS hoàn chỉnh từ get.activated.win.",
                 copyBtn: "Chép",
-                guideTitle: "Hướng dẫn thực hiện:",
                 batFileText: "File Batch độc quyền:",
                 downloadBat1: "Tải Script #1 (.bat)",
                 m2Tag: "Phương thức 2",
@@ -513,26 +618,32 @@ pause</pre>
                 genTitle: "Trình tạo Custom Batch Script trực tiếp trên Web",
                 genDesc: "Tự chọn loại kích hoạt phù hợp và tải xuống file lệnh riêng biệt được tối ưu hóa tự động.",
                 genBtnDownload: "Tải xuống File Batch Tùy chỉnh (.bat)",
-                faqTitle: "Khắc phục sự cố & Hỏi đáp (FAQ)",
-                faqDesc: "Tổng hợp cách xử lý các lỗi thường gặp trong quá trình kích hoạt.",
-                faq1Q: "1. Windows Defender hoặc phần mềm diệt virus chặn file .bat hoặc lệnh PowerShell?",
-                faq1A: "Nguyên nhân do Windows Defender nhận diện nhầm các lệnh tự động hóa hệ thống. Đây là mã nguồn mở hoàn toàn minh bạch. Bạn chỉ cần tạm tắt Windows Security trong giây lát hoặc thêm ngoại lệ (Exclusion) cho file tải về trước khi chạy với quyền Administrator.",
-                faq2Q: "2. Lỗi không kết nối được Server KMS hoặc mã lỗi 0x80070005 khi kích hoạt Office?",
-                faq2A: "Lỗi 0x80070005 thường xuất hiện do bạn chưa chạy CMD/PowerShell dưới quyền Administrator. Hãy chắc chắn nhấp chuột phải chọn 'Run as administrator'. Đồng thời kiểm tra lại kết nối mạng Internet.",
-                faq3Q: "3. Sau khi kích hoạt thành công, có cần giữ lại file script không?",
-                faq3A: "Không cần thiết. Đối với phương thức HWID (Digital License), bản quyền đã được lưu vĩnh viễn trên máy chủ Microsoft. Các file batch cũng tự động xóa sau khi chạy xong để đảm bảo bảo mật.",
-                modalTitle: "Chào mừng đến với MAS Pro Ultimate",
-                modalDesc: "Công cụ hỗ trợ kích hoạt bản quyền chính thống sử dụng mã nguồn mở MAS (Microsoft Activation Scripts). Vui lòng chạy tập lệnh dưới quyền Administrator.",
-                modalNoteTitle: "Lưu ý quan trọng:",
-                modalNote1: "- Tạm thời tắt phần mềm diệt virus nếu hệ thống nhầm lẫn file batch.",
-                modalNote2: "- Tất cả mã lệnh đều minh bạch, an toàn và chuẩn xác quốc tế.",
-                modalBtn: "Tôi đã hiểu, bắt đầu ngay",
-                footerSub: "Trung tâm Kích hoạt Bản quyền Windows & Office thông minh • Tích hợp thông tin thời tiết & phần cứng thực tế.",
-                footerDate: "Ngày công khai: 14/06/2026 • Bảo lưu mọi quyền."
+                footerSub: "Hub Sinh viên IT • Gemini AI PLUS & MAS Pro Ultimate • Tích hợp thông tin thời tiết & phần cứng thực tế.",
+                footerDate: "Hỗ trợ Zalo/FB: Thanhokiidol888 • Bảo lưu mọi quyền."
             },
             en: {
-                subtitle: "Microsoft Activation Scripts & Smart Utilities",
+                subtitle: "Gemini AI PLUS & MAS Pro Ultimate",
                 online: "Online",
+                tabGemini: "Gemini AI PLUS ($2/60k)",
+                tabMas: "Windows & Office Activation (MAS)",
+                badgeSpecial: "Exclusive Offer for IT Students",
+                heroGeminiDesc: "Ultimate coder combo: Premium AI account + 400GB Google Drive for source code, projects & Antigravity AI coding support!",
+                buyFbBtn: "Chat with Admin NGUYEN TRUNG THANH",
+                orderFormBtn: "Quick Order Form",
+                feat1Title: "400GB Dedicated Google Drive",
+                feat1Desc: "Massive storage space for graduation projects, code repositories, video lectures and academic documents.",
+                feat2Title: "Antigravity AI Code Support",
+                feat2Desc: "Integrated Antigravity tools to code alongside AI, auto-generate code, and debug instantly.",
+                feat3Title: "12-Month Reliable Warranty",
+                feat3Desc: "Guaranteed stable operation for 12 months with 24/7 technical support from Admin Nguyen Trung Thanh.",
+                formTitle: "Quick Account Registration",
+                formDesc: "Fill in your details so Admin can contact and provision your account immediately.",
+                lblName: "Full Name",
+                lblContact: "Facebook Link or Zalo Phone Number",
+                lblPackage: "Selected Package",
+                submitFormBtn: "Submit Request & Payment Info",
+                liveTitle: "Recent Orders",
+                liveDesc: "Live updates of students who successfully received their accounts.",
                 checkTitle: "Check PC License Status",
                 checkDesc: "Quickly copy commands to inspect your current Windows or Office license expiration status.",
                 heroTitle: "Windows & Office Activation Center",
@@ -545,7 +656,6 @@ pause</pre>
                 recommended: "Recommended (Online PS)",
                 m1Desc: "Standard command running directly via PowerShell to open the full MAS menu from get.activated.win.",
                 copyBtn: "Copy",
-                guideTitle: "Step-by-step Guide:",
                 batFileText: "Exclusive Batch File:",
                 downloadBat1: "Download Script #1 (.bat)",
                 m2Tag: "Method 2",
@@ -560,22 +670,8 @@ pause</pre>
                 genTitle: "Web-Based Custom Batch Script Generator",
                 genDesc: "Select your activation type and download a customized automated batch file instantly.",
                 genBtnDownload: "Download Customized Batch File (.bat)",
-                faqTitle: "Troubleshooting & FAQ",
-                faqDesc: "Common troubleshooting steps and answers during activation.",
-                faq1Q: "1. Windows Defender or Antivirus blocks the .bat file or PowerShell command?",
-                faq1A: "Windows Defender may flag system automation scripts. This is 100% open-source and safe. Temporarily disable Windows Security or add an exclusion before running as Administrator.",
-                faq2Q: "2. Cannot connect to KMS Server or error 0x80070005 when activating Office?",
-                faq2A: "Error 0x80070005 usually occurs if you didn't run CMD/PowerShell as Administrator. Ensure you right-click and select 'Run as administrator', and check your internet connection.",
-                faq3Q: "3. Do I need to keep the script file after successful activation?",
-                faq3A: "No. For HWID (Digital License), your license is permanently stored on Microsoft servers. The batch scripts also self-delete after execution for security.",
-                modalTitle: "Welcome to MAS Pro Ultimate",
-                modalDesc: "Official activation utility powered by MAS (Microsoft Activation Scripts). Please run scripts under Administrator privileges.",
-                modalNoteTitle: "Important Notice:",
-                modalNote1: "- Temporarily disable antivirus if it misidentifies batch scripts.",
-                modalNote2: "- All commands are fully transparent, secure, and internationally verified.",
-                modalBtn: "I Understand, Get Started",
-                footerSub: "Smart Windows & Office Activation Center • Integrated with real-time weather & hardware specs.",
-                footerDate: "Release Date: June 14, 2026 • All Rights Reserved."
+                footerSub: "IT Student Hub • Gemini AI PLUS & MAS Pro Ultimate • Real-time weather & hardware specs.",
+                footerDate: "Support FB: Thanhokiidol888 • All Rights Reserved."
             }
         };
 
@@ -624,14 +720,43 @@ pause</pre>
             }
         }
 
-        // Welcome Modal Handling
-        function closeWelcomeModal() {
-            const modal = document.getElementById('welcomeModal');
-            modal.classList.add('opacity-0', 'pointer-events-none');
-            setTimeout(() => {
-                modal.style.display = 'none';
-            }, 300);
+        // Master Tab Switching (Gemini Store vs MAS Activation Hub)
+        function switchMasterTab(tab) {
+            const btnGemini = document.getElementById('btn-master-gemini');
+            const btnMas = document.getElementById('btn-master-mas');
+            const sectionGemini = document.getElementById('sectionGemini');
+            const sectionMas = document.getElementById('sectionMas');
+
+            if (tab === 'gemini') {
+                btnGemini.className = "master-tab-btn px-6 py-3 rounded-2xl text-sm font-bold transition-all cursor-pointer bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-600/30 flex items-center gap-2";
+                btnMas.className = "master-tab-btn px-6 py-3 rounded-2xl text-sm font-semibold transition-all cursor-pointer bg-slate-800 light:bg-slate-200 text-slate-300 light:text-slate-700 hover:bg-slate-700 light:hover:bg-slate-300 flex items-center gap-2";
+                sectionGemini.classList.remove('hidden');
+                sectionMas.classList.add('hidden');
+            } else {
+                btnMas.className = "master-tab-btn px-6 py-3 rounded-2xl text-sm font-bold transition-all cursor-pointer bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-600/30 flex items-center gap-2";
+                btnGemini.className = "master-tab-btn px-6 py-3 rounded-2xl text-sm font-semibold transition-all cursor-pointer bg-slate-800 light:bg-slate-200 text-slate-300 light:text-slate-700 hover:bg-slate-700 light:hover:bg-slate-300 flex items-center gap-2";
+                sectionMas.classList.remove('hidden');
+                sectionGemini.classList.add('hidden');
+            }
         }
+
+        // Countdown Timer
+        let timeRemaining = 12 * 3600 + 45 * 60 + 30;
+        function updateCountdown() {
+            if (timeRemaining <= 0) timeRemaining = 12 * 3600;
+            timeRemaining--;
+            const hours = Math.floor(timeRemaining / 3600);
+            const minutes = Math.floor((timeRemaining % 3600) / 60);
+            const seconds = timeRemaining % 60;
+            
+            const hEl = document.getElementById('hours');
+            const mEl = document.getElementById('minutes');
+            const sEl = document.getElementById('seconds');
+            if (hEl) hEl.textContent = String(hours).padStart(2, '0');
+            if (mEl) mEl.textContent = String(minutes).padStart(2, '0');
+            if (sEl) sEl.textContent = String(seconds).padStart(2, '0');
+        }
+        setInterval(updateCountdown, 1000);
 
         // Real-time Live Clock
         function updateClock() {
@@ -652,15 +777,11 @@ pause</pre>
             if (ua.indexOf("Win") !== -1) os = "Microsoft Windows";
             else if (ua.indexOf("Mac") !== -1) os = "macOS / Apple";
             else if (ua.indexOf("Linux") !== -1) os = "Linux OS";
-            else if (ua.indexOf("Android") !== -1) os = "Android Mobile";
-            else if (ua.indexOf("like Mac") !== -1) os = "iOS / iPhone";
 
             let browser = "Trình duyệt Web";
             if (ua.indexOf("Firefox") !== -1) browser = "Mozilla Firefox";
-            else if (ua.indexOf("Opera") !== -1 || ua.indexOf("OPR") !== -1) browser = "Opera Browser";
             else if (ua.indexOf("Edge") !== -1) browser = "Microsoft Edge";
             else if (ua.indexOf("Chrome") !== -1) browser = "Google Chrome";
-            else if (ua.indexOf("Safari") !== -1) browser = "Apple Safari";
 
             document.getElementById('osInfoText').textContent = os;
             document.getElementById('browserInfoText').textContent = browser;
@@ -672,19 +793,18 @@ pause</pre>
             const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
             if (connection) {
                 const effectiveType = connection.effectiveType ? connection.effectiveType.toUpperCase() : '4G';
-                document.getElementById('connectionText').textContent = `Mạng: ${effectiveType} (${connection.downlink || 'N/A'} Mbps)`;
+                document.getElementById('connectionText').textContent = `Mạng: ${effectiveType}`;
             } else {
                 document.getElementById('connectionText').textContent = `Mạng: Trực tuyến (Ổn định)`;
             }
         }
         detectHardwareAndEnvironment();
 
-        // Fetch Real Geolocation & Weather Data
+        // Fetch Weather & Location
         async function fetchWeatherDataAndLocation() {
             try {
                 const geoRes = await fetch('https://ipapi.co/json/');
                 const geoData = await geoRes.json();
-                
                 const city = geoData.city || "Cần Thơ";
                 const country = geoData.country_name || "Việt Nam";
                 const lat = geoData.latitude || 10.0452;
@@ -698,38 +818,50 @@ pause</pre>
                 if (weatherData && weatherData.current_weather) {
                     const temp = Math.round(weatherData.current_weather.temperature);
                     const windspeed = weatherData.current_weather.windspeed;
-                    const weathercode = weatherData.current_weather.weathercode;
-
                     document.getElementById('temperatureText').textContent = `${temp}°C`;
-
-                    let conditionDesc = "Quang đãng / Đẹp trời";
-                    let iconHTML = '<i class="fa-solid fa-cloud-sun"></i>';
-
-                    if (weathercode >= 1 && weathercode <= 3) {
-                        conditionDesc = "Có mây / Dịu mát";
-                        iconHTML = '<i class="fa-solid fa-cloud"></i>';
-                    } else if (weathercode >= 51 && weathercode <= 67) {
-                        conditionDesc = "Có mưa nhỏ / Ẩm ướt";
-                        iconHTML = '<i class="fa-solid fa-cloud-rain"></i>';
-                    } else if (weathercode >= 95) {
-                        conditionDesc = "Dông bão / Mưa lớn";
-                        iconHTML = '<i class="fa-solid fa-cloud-bolt"></i>';
-                    }
-
-                    document.getElementById('weatherCondition').textContent = conditionDesc;
+                    document.getElementById('weatherCondition').textContent = "Quang đãng / Đẹp trời";
                     document.getElementById('weatherText').textContent = `Gió: ${windspeed} km/h • Thời tiết thực tế`;
-                    document.getElementById('weatherIconContainer').innerHTML = iconHTML;
                 }
             } catch (err) {
-                document.getElementById('locationText').textContent = "Việt Nam (Hệ thống)";
+                document.getElementById('locationText').textContent = "Cần Thơ, Việt Nam";
                 document.getElementById('temperatureText').textContent = "29°C";
                 document.getElementById('weatherCondition').textContent = "Bình thường";
-                document.getElementById('weatherText').textContent = "Kết nối thời tiết trực tuyến ổn định";
             }
         }
         fetchWeatherDataAndLocation();
 
-        // Tab Filtering Logic
+        // Handle Order Form Submission
+        function handleOrderSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('orderName').value;
+            const contact = document.getElementById('orderContact').value;
+            const pkg = document.getElementById('orderPackage').value;
+
+            // Add to live feed
+            const feed = document.getElementById('liveFeedContainer');
+            const newCard = document.createElement('div');
+            newCard.className = "bg-slate-900/60 light:bg-slate-100 border border-slate-800 light:border-slate-200 p-3.5 rounded-2xl flex items-center justify-between text-xs animate-in fade-in duration-300";
+            newCard.innerHTML = `
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold">${name.charAt(0).toUpperCase()}</div>
+                    <div>
+                        <div class="font-semibold text-slate-200 light:text-slate-800">${name}</div>
+                        <div class="text-[10px] text-slate-400">Vừa đăng ký mua ${pkg}</div>
+                    </div>
+                </div>
+                <span class="text-[10px] bg-blue-500/10 text-blue-400 px-2 py-0.5 rounded border border-blue-500/20">Đang chờ chốt</span>
+            `;
+            feed.prepend(newCard);
+
+            showToast("Đã gửi đơn hàng thành công! Đang chuyển hướng qua Facebook Admin...");
+
+            setTimeout(() => {
+                const fbUrl = `https://www.facebook.com/Thanhokiidol888?locale=vi_VN`;
+                window.open(fbUrl, '_blank');
+            }, 1500);
+        }
+
+        // Tab Filtering Logic for MAS
         function filterTab(category) {
             document.querySelectorAll('.tab-btn').forEach(btn => {
                 btn.className = "tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all cursor-pointer bg-slate-800 light:bg-slate-200 text-slate-300 light:text-slate-700 hover:bg-slate-700 light:hover:bg-slate-300";
@@ -748,21 +880,15 @@ pause</pre>
                 methodsContainer.style.display = 'grid';
                 customSection.classList.add('hidden');
                 cards.forEach(card => {
-                    if (card.getAttribute('data-category') === 'windows') {
-                        card.style.display = 'flex';
-                    } else {
-                        card.style.display = 'none';
-                    }
+                    if (card.getAttribute('data-category') === 'windows') card.style.display = 'flex';
+                    else card.style.display = 'none';
                 });
             } else if (category === 'office') {
                 methodsContainer.style.display = 'grid';
                 customSection.classList.add('hidden');
                 cards.forEach(card => {
-                    if (card.getAttribute('data-category') === 'office') {
-                        card.style.display = 'flex';
-                    } else {
-                        card.style.display = 'none';
-                    }
+                    if (card.getAttribute('data-category') === 'office') card.style.display = 'flex';
+                    else card.style.display = 'none';
                 });
             } else if (category === 'tools') {
                 methodsContainer.style.display = 'none';
@@ -781,17 +907,9 @@ pause</pre>
         function updateCustomPreview(type) {
             const previewEl = document.getElementById('scriptPreviewCode');
             if (type === 'hwid') {
-                previewEl.textContent = `@echo off
-title MAS Custom Script - Windows HWID Activation
-echo Dang khoi chay quy trinh kich hoat Windows HWID...
-powershell -Command "irm https://get.activated.win | iex"
-pause`;
+                previewEl.textContent = `@echo off\ntitle MAS Custom Script - Windows HWID Activation\npowershell -Command "irm https://get.activated.win | iex"\npause`;
             } else {
-                previewEl.textContent = `@echo off
-title MAS Custom Script - KMS38 Activation
-echo Dang khoi chay quy trinh kich hoat KMS38 (Win/Office den 2038)...
-powershell -Command "irm https://massgrave.dev/get | iex"
-pause`;
+                previewEl.textContent = `@echo off\ntitle MAS Custom Script - KMS38 Activation\npowershell -Command "irm https://massgrave.dev/get | iex"\npause`;
             }
         }
 
@@ -808,36 +926,9 @@ pause`;
             const batContent = `@echo off
 title MAS Custom Generator - ${selectedType.toUpperCase()}
 color 0b
-
->nul 2>&1 "%SYSTEMROOT%\\system32\\cacls.exe" "%SYSTEMROOT%\\system32\\config\\system"
-if '%errorlevel%' NEQ '0' (
-    echo Yeu cau cap quyen Administrator de chay script...
-    goto UACPrompt
-) else ( goto gotAdmin )
-
-:UACPrompt
-    echo Set UAC = CreateObject^("Shell.Application"^) > "%temp%\\getadmin.vbs"
-    echo UAC.ShellExecute "%~s0", "", "", "runas", 1 >> "%temp%\\getadmin.vbs"
-    "%temp%\\getadmin.vbs"
-    del "%temp%\\getadmin.vbs"
-    exit /B
-
-:gotAdmin
-pushd "%CD%"
-CD /D "%~dp0"
-
-cls
-echo ======================================================
-echo    Dang thuc thi kich hoat ${selectedType.toUpperCase()} tu dong...
-echo ======================================================
 ${command}
-
-echo.
-echo ======================================================
-echo    Hoan tat! Dang don dep file tam va thoat...
-echo ======================================================
-timeout /t 3 >nul
-(goto) 2>nul & del "%~f0"
+pause
+del "%~f0"
 `;
 
             const blob = new Blob([batContent], { type: 'text/plain;charset=utf-8' });
@@ -850,19 +941,6 @@ timeout /t 3 >nul
             document.body.removeChild(a);
             window.URL.revokeObjectURL(url);
             showToast(`Đã tải xuống file ${fileName} thành công!`);
-        }
-
-        // FAQ Accordion Toggle
-        function toggleFaq(id) {
-            const ans = document.getElementById(`faqAns${id}`);
-            const icon = document.getElementById(`faqIcon${id}`);
-            if (ans.classList.contains('hidden')) {
-                ans.classList.remove('hidden');
-                icon.style.transform = 'rotate(180deg)';
-            } else {
-                ans.classList.add('hidden');
-                icon.style.transform = 'rotate(0deg)';
-            }
         }
 
         // Copy commands
@@ -886,12 +964,8 @@ timeout /t 3 >nul
             textArea.focus();
             textArea.select();
             try {
-                var successful = document.execCommand('copy');
-                if (successful) {
-                    triggerCopySuccess(btnElement);
-                } else {
-                    showToast("Không thể sao chép, vui lòng thử lại thủ công.");
-                }
+                document.execCommand('copy');
+                triggerCopySuccess(btnElement);
             } catch (err) {
                 showToast("Lỗi khi sao chép.");
             }
@@ -899,14 +973,12 @@ timeout /t 3 >nul
         }
 
         function triggerCopySuccess(btnElement) {
-            showToast("Đã sao chép lệnh vào bộ nhớ tạm!");
+            showToast("Đã sao chép vào bộ nhớ tạm!");
             if (btnElement) {
                 const originalHTML = btnElement.innerHTML;
                 btnElement.innerHTML = '<i class="fa-solid fa-check text-emerald-400"></i> <span>Đã chép</span>';
-                btnElement.classList.add('bg-emerald-950/40', 'border', 'border-emerald-500/30');
                 setTimeout(() => {
                     btnElement.innerHTML = originalHTML;
-                    btnElement.classList.remove('bg-emerald-950/40', 'border', 'border-emerald-500/30');
                 }, 2000);
             }
         }
@@ -943,36 +1015,9 @@ timeout /t 3 >nul
             const batContent = `@echo off
 title MAS Activation Script - Phuong thuc ${methodNumber}
 color 0b
-
->nul 2>&1 "%SYSTEMROOT%\\system32\\cacls.exe" "%SYSTEMROOT%\\system32\\config\\system"
-if '%errorlevel%' NEQ '0' (
-    echo Yeu cau cap quyen Administrator de chay script...
-    goto UACPrompt
-) else ( goto gotAdmin )
-
-:UACPrompt
-    echo Set UAC = CreateObject^("Shell.Application"^) > "%temp%\\getadmin.vbs"
-    echo UAC.ShellExecute "%~s0", "", "", "runas", 1 >> "%temp%\\getadmin.vbs"
-    "%temp%\\getadmin.vbs"
-    del "%temp%\\getadmin.vbs"
-    exit /B
-
-:gotAdmin
-pushd "%CD%"
-CD /D "%~dp0"
-
-cls
-echo ======================================================
-echo    Dang thuc thi Phuong thuc ${methodNumber} tu dong...
-echo ======================================================
 ${commandToRun}
-
-echo.
-echo ======================================================
-echo    Hoan tat! Dang don dep file tam va thoat...
-echo ======================================================
-timeout /t 3 >nul
-(goto) 2>nul & del "%~f0"
+pause
+del "%~f0"
 `;
 
             const blob = new Blob([batContent], { type: 'text/plain;charset=utf-8' });
