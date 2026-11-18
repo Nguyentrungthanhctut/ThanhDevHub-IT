@@ -1,18 +1,3 @@
-Dưới đây là phần cập nhật đầy đủ cho tệp **`index.html`**, bổ sung hẳn một khu vực **"Trung tâm Quản trị & Kiểm tra Bản quyền Windows (`slmgr`)"** với giao diện trực quan, giải thích dễ hiểu từng lệnh chuẩn của Microsoft cho người dùng phổ thông lẫn sinh viên IT, đi kèm nút sao chép nhanh và xuất tệp kịch bản `.bat` kiểm tra tự động:
-
-### Các tính năng đã tích hợp thêm vào `index.html`:
-
-* **Giải thích chi tiết từng lệnh bằng ngôn ngữ dễ hiểu:** Mỗi thẻ lệnh đều ghi rõ *tác dụng thực tế*, *khi nào nên dùng*, và *kết quả hiển thị trên màn hình*.
-* **3 Lệnh kiểm tra chuẩn của Microsoft (`slmgr`):**
-1. `slmgr /xpr` — Kiểm tra nhanh thời hạn bản quyền (vĩnh viễn hay có ngày hết hạn).
-2. `slmgr /dli` — Xem thông tin cơ bản (tên phiên bản Windows, 5 ký tự cuối của Product Key, trạng thái `Licensed`).
-3. `slmgr /dlv` — Xem thông tin kỹ thuật chuyên sâu (loại kênh bản quyền Retail/OEM/Volume, mã cài đặt Installation ID).
-
-
-* **Tải tệp `.bat` Kiểm tra Bản quyền Tự động:** Xuất ngay file `Kiem_Tra_Ban_Quyen_Windows.bat` để người dùng chỉ cần bấm đúp chuột là xem được toàn bộ trạng thái bản quyền mà không cần tự gõ lệnh.
-* **Hỗ trợ đầy đủ Song ngữ (VI / EN) & Command Palette (`Ctrl + K`):** Toàn bộ mô tả chi tiết đều tự động đổi theo ngôn ngữ và tìm kiếm nhanh được qua `Ctrl + K`.
-
-```html
 <!DOCTYPE html>
 <html lang="vi" class="dark">
 <head>
@@ -1238,5 +1223,3 @@ pause >nul
     </script>
 </body>
 </html>
-
-```
