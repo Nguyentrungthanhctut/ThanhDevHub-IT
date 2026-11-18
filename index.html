@@ -1,10 +1,25 @@
+Dưới đây là phần cập nhật đầy đủ cho tệp **`index.html`**, bổ sung hẳn một khu vực **"Trung tâm Quản trị & Kiểm tra Bản quyền Windows (`slmgr`)"** với giao diện trực quan, giải thích dễ hiểu từng lệnh chuẩn của Microsoft cho người dùng phổ thông lẫn sinh viên IT, đi kèm nút sao chép nhanh và xuất tệp kịch bản `.bat` kiểm tra tự động:
+
+### Các tính năng đã tích hợp thêm vào `index.html`:
+
+* **Giải thích chi tiết từng lệnh bằng ngôn ngữ dễ hiểu:** Mỗi thẻ lệnh đều ghi rõ *tác dụng thực tế*, *khi nào nên dùng*, và *kết quả hiển thị trên màn hình*.
+* **3 Lệnh kiểm tra chuẩn của Microsoft (`slmgr`):**
+1. `slmgr /xpr` — Kiểm tra nhanh thời hạn bản quyền (vĩnh viễn hay có ngày hết hạn).
+2. `slmgr /dli` — Xem thông tin cơ bản (tên phiên bản Windows, 5 ký tự cuối của Product Key, trạng thái `Licensed`).
+3. `slmgr /dlv` — Xem thông tin kỹ thuật chuyên sâu (loại kênh bản quyền Retail/OEM/Volume, mã cài đặt Installation ID).
+
+
+* **Tải tệp `.bat` Kiểm tra Bản quyền Tự động:** Xuất ngay file `Kiem_Tra_Ban_Quyen_Windows.bat` để người dùng chỉ cần bấm đúp chuột là xem được toàn bộ trạng thái bản quyền mà không cần tự gõ lệnh.
+* **Hỗ trợ đầy đủ Song ngữ (VI / EN) & Command Palette (`Ctrl + K`):** Toàn bộ mô tả chi tiết đều tự động đổi theo ngôn ngữ và tìm kiếm nhanh được qua `Ctrl + K`.
+
+```html
 <!DOCTYPE html>
 <html lang="vi" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#0b0f19">
-    <title>ThanhDevHub-IT — IT Student Diagnostic & Dev Toolbox</title>
+    <title>ThanhDevHub-IT — IT Diagnostic, License Check & Dev Toolbox</title>
     <link rel="icon" type="image/jpeg" href="./logo.jpg">
     <link rel="manifest" href="./manifest.json">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
@@ -22,12 +37,13 @@
             --accent-hover: #2563eb;
             --accent-soft: rgba(59, 130, 246, 0.14);
             --emerald: #10b981;
+            --amber: #f59e0b;
             --shadow: 0 18px 40px -15px rgba(0, 0, 0, 0.65);
         }
 
         html.light {
             --bg-main: #f1f5f9;
-            --bg-glass: rgba(255, 255, 255, 0.88);
+            --bg-glass: rgba(255, 255, 255, 0.9);
             --bg-input: #f8fafc;
             --bg-pill: #e2e8f0;
             --border-color: rgba(15, 23, 42, 0.1);
@@ -143,7 +159,8 @@
         .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
         @media (max-width: 900px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
 
-        .card { border-radius: 22px; padding: 20px; transition: border-color 0.25s; }
+        .card { border-radius: 22px; padding: 20px; transition: border-color 0.25s; margin-bottom: 24px; }
+        .grid-2 .card { margin-bottom: 0; }
         .card:hover { border-color: rgba(59, 130, 246, 0.4); }
         .card-top { display: flex; align-items: center; justify-content: space-between; gap: 14px; }
         .icon-box {
@@ -182,9 +199,10 @@
         /* Section Title & Tabs */
         .section-head {
             display: flex; align-items: center; justify-content: space-between;
-            flex-wrap: wrap; gap: 12px; margin-bottom: 16px;
+            flex-wrap: wrap; gap: 12px; margin-bottom: 14px;
         }
-        .section-head h2 { font-size: 1.25rem; font-weight: 800; display: flex; align-items: center; gap: 9px; }
+        .section-head h2 { font-size: 1.2rem; font-weight: 800; display: flex; align-items: center; gap: 9px; }
+        .section-desc { font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 16px; line-height: 1.5; }
         .tab-bar { display: flex; gap: 8px; flex-wrap: wrap; }
         .tab-btn {
             background: var(--bg-pill);
@@ -198,6 +216,64 @@
             transition: 0.2s;
         }
         .tab-btn.active, .tab-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+        /* Windows License & Slmgr Guide Cards */
+        .lic-card {
+            background: var(--bg-input);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 12px;
+        }
+        .lic-badge {
+            display: inline-block;
+            font-size: 0.68rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 6px;
+            background: var(--accent-soft);
+            color: var(--accent);
+            margin-bottom: 6px;
+        }
+        .lic-title { font-size: 0.94rem; font-weight: 700; margin-bottom: 4px; }
+        .lic-explain { font-size: 0.78rem; color: var(--text-secondary); line-height: 1.5; }
+        .lic-result {
+            font-size: 0.74rem;
+            background: rgba(16, 185, 129, 0.08);
+            border-left: 3px solid var(--emerald);
+            padding: 7px 10px;
+            border-radius: 6px;
+            color: var(--text-primary);
+            line-height: 1.45;
+        }
+        .cmd-copy-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            background: var(--bg-pill);
+            border: 1px solid var(--border-color);
+            padding: 8px 10px;
+            border-radius: 10px;
+        }
+        .cmd-copy-bar code { font-size: 0.78rem; color: #38bdf8; overflow-x: auto; white-space: nowrap; }
+        html.light .cmd-copy-bar code { color: #0284c7; font-weight: 600; }
+
+        /* Step-by-step How-to Box */
+        .guide-steps {
+            margin-top: 16px;
+            padding: 14px 16px;
+            border-radius: 14px;
+            background: var(--accent-soft);
+            border: 1px solid rgba(59, 130, 246, 0.25);
+            font-size: 0.8rem;
+            line-height: 1.6;
+        }
+        .guide-steps ol { margin-left: 18px; margin-top: 6px; }
+        .guide-steps li { margin-bottom: 4px; }
 
         /* Ping Tester */
         .ping-card {
@@ -228,7 +304,7 @@
             transition: border-color 0.2s;
         }
         textarea.dev-area:focus, input.dev-field:focus { border-color: var(--accent); }
-        textarea.dev-area { min-height: 115px; resize: vertical; }
+        textarea.dev-area { min-height: 110px; resize: vertical; }
 
         .btn-primary {
             background: var(--accent);
@@ -245,6 +321,21 @@
             transition: 0.2s;
         }
         .btn-primary:hover { background: var(--accent-hover); }
+        .btn-emerald {
+            background: var(--emerald);
+            color: #fff;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: 0.2s;
+        }
+        .btn-emerald:hover { filter: brightness(1.08); }
         .btn-secondary {
             background: var(--bg-pill);
             color: var(--text-primary);
@@ -346,7 +437,7 @@
                 </div>
                 <div>
                     <h1>ThanhDevHub-IT</h1>
-                    <p data-i18n="subtitle">Bộ công cụ chẩn đoán hệ thống & tiện ích sinh viên IT</p>
+                    <p data-i18n="subtitle">Quản trị Windows, Chẩn đoán mạng & Dev Toolbox</p>
                 </div>
             </div>
 
@@ -384,7 +475,6 @@
 
         <!-- 1. Live System, Weather (Cached) & Deep Hardware Specs -->
         <div class="grid-2">
-            <!-- Weather & Location with Skeleton Loading & Session Cache -->
             <div class="glass card">
                 <div class="card-top">
                     <div style="display:flex; align-items:center; gap:14px;">
@@ -404,7 +494,6 @@
                 </div>
             </div>
 
-            <!-- Deep Hardware & Environment Specs -->
             <div class="glass card">
                 <div class="card-top">
                     <div style="display:flex; align-items:center; gap:14px;">
@@ -429,8 +518,81 @@
             </div>
         </div>
 
-        <!-- 2. Network Latency / Ping Tester -->
-        <section class="glass card" style="margin-bottom:24px;">
+        <!-- 2. Trung tâm Kiểm tra Bản quyền & Quản trị Windows (Chi tiết, Dễ hiểu) -->
+        <section class="glass card" id="licenseSection">
+            <div class="section-head">
+                <h2><i class="fa-brands fa-windows" style="color:var(--accent)"></i> <span data-i18n="licSectionTitle">Kiểm tra & Quản trị Bản quyền Windows (Chi tiết từng lệnh)</span></h2>
+                <button class="btn-emerald" onclick="downloadLicenseCheckBat()">
+                    <i class="fa-solid fa-file-arrow-down"></i> <span data-i18n="licDownloadBat">Tải File Kiểm Tra Tự Động (.bat)</span>
+                </button>
+            </div>
+            <p class="section-desc" data-i18n="licSectionDesc">
+                Sử dụng công cụ quản lý bản quyền tích hợp sẵn của Microsoft (slmgr) để kiểm tra máy tính của bạn đã kích hoạt bản quyền vĩnh viễn hay chưa, thuộc loại bản quyền nào (OEM theo máy, Retail hay Volume).
+            </p>
+
+            <div class="grid-3">
+                <!-- Method 1: slmgr /xpr -->
+                <div class="lic-card">
+                    <div>
+                        <span class="lic-badge" data-i18n="licBadge1">Cách 1 • Nhanh nhất</span>
+                        <div class="lic-title" data-i18n="licTitle1">Kiểm tra thời hạn bản quyền</div>
+                        <p class="lic-explain" data-i18n="licExplain1">Mở một hộp thoại nhỏ thông báo trực tiếp Windows của bạn có bản quyền vĩnh viễn hay sẽ hết hạn vào ngày nào.</p>
+                    </div>
+                    <div class="lic-result" data-i18n="licResult1">
+                        <strong>Kết quả nhận được:</strong> Nếu hiện <em>"The machine is permanently activated"</em> nghĩa là máy đã có bản quyền vĩnh viễn.
+                    </div>
+                    <div class="cmd-copy-bar">
+                        <code class="code-font">slmgr /xpr</code>
+                        <button class="btn-primary" onclick="copyTextRaw('slmgr /xpr')"><i class="fa-regular fa-copy"></i> <span data-i18n="btnCopy">Sao chép</span></button>
+                    </div>
+                </div>
+
+                <!-- Method 2: slmgr /dli -->
+                <div class="lic-card">
+                    <div>
+                        <span class="lic-badge" data-i18n="licBadge2">Cách 2 • Thông tin cơ bản</span>
+                        <div class="lic-title" data-i18n="licTitle2">Xem phiên bản & 5 số cuối Key</div>
+                        <p class="lic-explain" data-i18n="licExplain2">Hiển thị tên phiên bản Windows đang cài (Home/Pro/Education), kênh phân phối và 5 ký tự cuối của mã Product Key.</p>
+                    </div>
+                    <div class="lic-result" data-i18n="licResult2">
+                        <strong>Kết quả nhận được:</strong> Dòng <em>License Status: Licensed</em> xác nhận Windows đang hoạt động hợp lệ.
+                    </div>
+                    <div class="cmd-copy-bar">
+                        <code class="code-font">slmgr /dli</code>
+                        <button class="btn-primary" onclick="copyTextRaw('slmgr /dli')"><i class="fa-regular fa-copy"></i> <span data-i18n="btnCopy">Sao chép</span></button>
+                    </div>
+                </div>
+
+                <!-- Method 3: slmgr /dlv -->
+                <div class="lic-card">
+                    <div>
+                        <span class="lic-badge" data-i18n="licBadge3">Cách 3 • Chuyên sâu IT</span>
+                        <div class="lic-title" data-i18n="licTitle3">Xem thông số kỹ thuật chi tiết</div>
+                        <p class="lic-explain" data-i18n="licExplain3">Liệt kê toàn bộ mã định danh Activation ID, Installation ID và thời gian gia hạn còn lại (tính bằng phút).</p>
+                    </div>
+                    <div class="lic-result" data-i18n="licResult3">
+                        <strong>Kết quả nhận được:</strong> Dùng khi cần sao lưu mã Installation ID hoặc kiểm tra lỗi kích hoạt hệ thống.
+                    </div>
+                    <div class="cmd-copy-bar">
+                        <code class="code-font">slmgr /dlv</code>
+                        <button class="btn-primary" onclick="copyTextRaw('slmgr /dlv')"><i class="fa-regular fa-copy"></i> <span data-i18n="btnCopy">Sao chép</span></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hướng dẫn từng bước cho người mới -->
+            <div class="guide-steps">
+                <strong data-i18n="guideHeading"><i class="fa-solid fa-circle-info"></i> Hướng dẫn cách chạy lệnh cho người mới (3 bước đơn giản):</strong>
+                <ol>
+                    <li data-i18n="guideStep1">Bấm nút <strong>Sao chép</strong> ở một trong 3 cách bên trên (hoặc bấm nút màu xanh <strong>Tải File Kiểm Tra Tự Động (.bat)</strong> ở góc phải để mở trực tiếp).</li>
+                    <li data-i18n="guideStep2">Trên bàn phím máy tính, nhấn tổ hợp phím <strong>Windows + R</strong> để mở hộp thoại <em>Run</em>.</li>
+                    <li data-i18n="guideStep3">Dán lệnh vừa sao chép (<strong>Ctrl + V</strong>) vào ô trống rồi nhấn <strong>Enter</strong>, chờ khoảng 2–3 giây sẽ thấy bảng thông báo kết quả hiện lên màn hình.</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- 3. Network Latency / Ping Tester -->
+        <section class="glass card">
             <div class="section-head">
                 <h2><i class="fa-solid fa-gauge-high" style="color:var(--accent)"></i> <span data-i18n="pingTitle">Kiểm tra Độ trễ Mạng (Ping / Latency Tester)</span></h2>
                 <button class="btn-primary" onclick="runPingTests()">
@@ -462,8 +624,8 @@
             </div>
         </section>
 
-        <!-- 3. IT Student Dev Toolbox -->
-        <section class="glass card">
+        <!-- 4. IT Student Dev Toolbox -->
+        <section class="glass card" style="margin-bottom:0;">
             <div class="section-head">
                 <h2><i class="fa-solid fa-toolbox" style="color:#8b5cf6"></i> <span data-i18n="toolboxTitle">Dev Toolbox — Xử lý Dữ liệu Nhanh</span></h2>
                 <div class="tab-bar">
@@ -532,7 +694,7 @@
         <div class="glass cmd-dialog">
             <div class="cmd-search-wrap">
                 <i class="fa-solid fa-terminal" style="color:var(--accent)"></i>
-                <input type="text" id="cmdSearchInput" oninput="filterCommands()" data-i18n-placeholder="cmdPlaceholder" placeholder="Gõ lệnh hoặc tên công cụ (VD: Ping, JSON, Base64, Theme)...">
+                <input type="text" id="cmdSearchInput" oninput="filterCommands()" data-i18n-placeholder="cmdPlaceholder" placeholder="Gõ lệnh hoặc tên công cụ (Bản quyền, Ping, JSON, Base64, Theme)...">
                 <kbd>ESC</kbd>
             </div>
             <div class="cmd-list" id="cmdList"></div>
@@ -548,16 +710,16 @@
     <!-- Footer -->
     <footer class="glass">
         <div class="container footer-inner">
-            <p data-i18n="footerLeft">ThanhDevHub-IT • Tối ưu hóa hiệu năng, Cache API thông minh & hỗ trợ cài đặt PWA.</p>
+            <p data-i18n="footerLeft">ThanhDevHub-IT • Quản trị Windows, Chẩn đoán mạng & Dev Toolbox hỗ trợ PWA.</p>
             <p>© 2026 <strong>Nguyễn Trung Thành</strong> • <a href="https://github.com/Nguyentrungthanhctut" target="_blank" style="color:var(--accent); text-decoration:none;">GitHub</a></p>
         </div>
     </footer>
 
     <script>
-        /* ================= 1. MULTI-LANGUAGE DICTIONARY (100% COVERAGE) ================= */
+        /* ================= 1. MULTI-LANGUAGE DICTIONARY ================= */
         const i18n = {
             vi: {
-                subtitle: "Bộ công cụ chẩn đoán hệ thống & tiện ích sinh viên IT",
+                subtitle: "Quản trị Windows, Chẩn đoán mạng & Dev Toolbox",
                 quickSearch: "Tìm nhanh",
                 online: "Trực tuyến",
                 installApp: "Cài App",
@@ -568,8 +730,26 @@
                 weatherLive: "Dữ liệu thời gian thực",
                 threads: "luồng",
                 battery: "Pin",
-                charging: "Đang sạc",
                 notSupported: "Không hỗ trợ",
+                licSectionTitle: "Kiểm tra & Quản trị Bản quyền Windows (Chi tiết từng lệnh)",
+                licDownloadBat: "Tải File Kiểm Tra Tự Động (.bat)",
+                licSectionDesc: "Sử dụng công cụ quản lý bản quyền tích hợp sẵn của Microsoft (slmgr) để kiểm tra máy tính của bạn đã kích hoạt bản quyền vĩnh viễn hay chưa, thuộc loại bản quyền nào (OEM theo máy, Retail hay Volume).",
+                licBadge1: "Cách 1 • Nhanh nhất",
+                licTitle1: "Kiểm tra thời hạn bản quyền",
+                licExplain1: "Mở một hộp thoại nhỏ thông báo trực tiếp Windows của bạn có bản quyền vĩnh viễn hay sẽ hết hạn vào ngày nào.",
+                licResult1: "Kết quả: Nếu hiện 'The machine is permanently activated' nghĩa là máy đã có bản quyền vĩnh viễn.",
+                licBadge2: "Cách 2 • Thông tin cơ bản",
+                licTitle2: "Xem phiên bản & 5 số cuối Key",
+                licExplain2: "Hiển thị tên phiên bản Windows đang cài (Home/Pro/Education), kênh phân phối và 5 ký tự cuối của mã Product Key.",
+                licResult2: "Kết quả: Dòng 'License Status: Licensed' xác nhận Windows đang hoạt động hợp lệ.",
+                licBadge3: "Cách 3 • Chuyên sâu IT",
+                licTitle3: "Xem thông số kỹ thuật chi tiết",
+                licExplain3: "Liệt kê toàn bộ mã định danh Activation ID, Installation ID và thời gian gia hạn còn lại (tính bằng phút).",
+                licResult3: "Kết quả: Dùng khi cần sao lưu mã Installation ID hoặc kiểm tra lỗi kích hoạt hệ thống.",
+                guideHeading: "Hướng dẫn cách chạy lệnh cho người mới (3 bước đơn giản):",
+                guideStep1: "Bấm nút Sao chép ở một trong 3 cách bên trên (hoặc bấm nút Tải File Kiểm Tra Tự Động (.bat) ở góc phải để mở trực tiếp).",
+                guideStep2: "Trên bàn phím máy tính, nhấn tổ hợp phím Windows + R để mở hộp thoại Run.",
+                guideStep3: "Dán lệnh vừa sao chép (Ctrl + V) vào ô trống rồi nhấn Enter, chờ khoảng 2–3 giây sẽ thấy bảng thông báo kết quả.",
                 pingTitle: "Kiểm tra Độ trễ Mạng (Ping / Latency Tester)",
                 pingBtn: "Đo lại tốc độ",
                 measuring: "Đang đo...",
@@ -584,11 +764,14 @@
                 btnEncode: "Mã hóa Base64",
                 btnDecode: "Giải mã Base64",
                 btnCopy: "Sao chép",
-                cmdPlaceholder: "Gõ lệnh hoặc tên công cụ (Ping, JSON, Base64, Theme, Ngôn ngữ)...",
-                footerLeft: "ThanhDevHub-IT • Tối ưu hóa hiệu năng, Cache API thông minh & hỗ trợ cài đặt PWA.",
+                cmdPlaceholder: "Gõ lệnh hoặc tên công cụ (Bản quyền, Ping, JSON, Base64, Theme)...",
+                footerLeft: "ThanhDevHub-IT • Quản trị Windows, Chẩn đoán mạng & Dev Toolbox hỗ trợ PWA.",
                 toastCopied: "Đã sao chép vào bộ nhớ tạm!",
+                toastBatDownloaded: "Đã tải tệp Kiem_Tra_Ban_Quyen_Windows.bat!",
                 toastInvalidJson: "Lỗi cú pháp JSON! Vui lòng kiểm tra lại.",
                 toastInvalidB64: "Chuỗi Base64 không hợp lệ!",
+                cmdLicBat: "Tải tệp kiểm tra bản quyền Windows (.bat)",
+                cmdLicXpr: "Sao chép lệnh kiểm tra hạn bản quyền (slmgr /xpr)",
                 cmdPing: "Chạy kiểm tra độ trễ mạng (Ping Test)",
                 cmdJson: "Mở công cụ JSON Formatter",
                 cmdB64: "Mở công cụ Base64 Encode / Decode",
@@ -599,7 +782,7 @@
                 cmdClearCache: "Làm mới dữ liệu Thời tiết (Xóa Cache)"
             },
             en: {
-                subtitle: "System Diagnostics & IT Student Developer Toolbox",
+                subtitle: "Windows Diagnostics, Network & Dev Toolbox",
                 quickSearch: "Quick Search",
                 online: "Online",
                 installApp: "Install App",
@@ -610,8 +793,26 @@
                 weatherLive: "Live API Data",
                 threads: "threads",
                 battery: "Battery",
-                charging: "Charging",
                 notSupported: "N/A",
+                licSectionTitle: "Windows License & Activation Status Check (Step-by-Step)",
+                licDownloadBat: "Download Auto-Check Script (.bat)",
+                licSectionDesc: "Use Microsoft's built-in Software Licensing Management Tool (slmgr) to check whether your Windows is permanently activated and inspect your license channel (OEM, Retail, or Volume).",
+                licBadge1: "Method 1 • Fastest",
+                licTitle1: "Check License Expiration",
+                licExplain1: "Opens a dialog box showing whether your Windows is permanently activated or expires on a specific date.",
+                licResult1: "Expected Output: 'The machine is permanently activated' confirms permanent activation.",
+                licBadge2: "Method 2 • Basic Info",
+                licTitle2: "View Edition & Last 5 Key Chars",
+                licExplain2: "Displays your installed Windows edition (Home/Pro/Education), license channel, and the last 5 characters of your Product Key.",
+                licResult2: "Expected Output: 'License Status: Licensed' confirms your Windows license is valid.",
+                licBadge3: "Method 3 • IT Diagnostics",
+                licTitle3: "Detailed Technical License Info",
+                licExplain3: "Lists full Activation ID, Installation ID, and remaining grace/renewal period in minutes.",
+                licResult3: "Expected Output: Useful for backing up Installation ID or diagnosing activation issues.",
+                guideHeading: "How to run these commands (3 simple steps for beginners):",
+                guideStep1: "Click Copy on any of the 3 methods above (or click Download Auto-Check Script (.bat) on the top right).",
+                guideStep2: "On your keyboard, press Windows + R to open the Run dialog.",
+                guideStep3: "Paste the copied command (Ctrl + V) and press Enter. Wait 2–3 seconds for the status dialog to appear.",
                 pingTitle: "Network Latency / Ping Tester",
                 pingBtn: "Re-test Ping",
                 measuring: "Testing...",
@@ -626,11 +827,14 @@
                 btnEncode: "Base64 Encode",
                 btnDecode: "Base64 Decode",
                 btnCopy: "Copy",
-                cmdPlaceholder: "Type command or tool name (Ping, JSON, Base64, Theme, Language)...",
-                footerLeft: "ThanhDevHub-IT • Performance optimized, smart API caching & PWA ready.",
+                cmdPlaceholder: "Type command or tool name (License, Ping, JSON, Base64, Theme)...",
+                footerLeft: "ThanhDevHub-IT • Windows Diagnostics, Network & Dev Toolbox (PWA Ready).",
                 toastCopied: "Copied to clipboard!",
+                toastBatDownloaded: "Downloaded Kiem_Tra_Ban_Quyen_Windows.bat!",
                 toastInvalidJson: "Invalid JSON syntax! Please check again.",
                 toastInvalidB64: "Invalid Base64 string!",
+                cmdLicBat: "Download Windows License Auto-Check (.bat)",
+                cmdLicXpr: "Copy License Expiration Command (slmgr /xpr)",
                 cmdPing: "Run Network Latency / Ping Test",
                 cmdJson: "Open JSON Formatter",
                 cmdB64: "Open Base64 Encode / Decode",
@@ -694,7 +898,7 @@
 
         /* ================= 3. WEATHER WITH 30-MIN SESSION CACHE & SKELETON ================= */
         const WEATHER_CACHE_KEY = 'td_weather_cache_v1';
-        const CACHE_TTL_MS = 30 * 60 * 1000; // 30 phút
+        const CACHE_TTL_MS = 30 * 60 * 1000;
 
         function renderWeatherUI(data, isCached) {
             const dict = i18n[currentLang];
@@ -746,7 +950,6 @@
                 sessionStorage.setItem(WEATHER_CACHE_KEY, JSON.stringify({ timestamp: Date.now(), payload }));
                 renderWeatherUI(payload, false);
             } catch (err) {
-                // Fallback an toàn nếu API bị giới hạn 429
                 const fallback = { city: 'Cần Thơ', country: 'Việt Nam', temp: 29, wind: 11 };
                 renderWeatherUI(fallback, true);
             }
@@ -797,7 +1000,42 @@
             }
         }
 
-        /* ================= 5. REAL NETWORK PING / LATENCY TESTER ================= */
+        /* ================= 5. WINDOWS LICENSE CHECK (.BAT GENERATOR) ================= */
+        function downloadLicenseCheckBat() {
+            const batScript = `@echo off
+title ThanhDevHub-IT - Kiem Tra Trang Thai Ban Quyen Windows
+color 0b
+echo ============================================================
+echo   CONG CU KIEM TRA TRANG THAI BAN QUYEN WINDOWS (CHUAN MS)
+echo ============================================================
+echo.
+echo [1/2] Dang kiem tra thong tin phien ban va trang thai kich hoat...
+cscript //nologo %windir%\\system32\\slmgr.vbs /dli
+echo.
+echo [2/2] Dang mo hop thoai kiem tra thoi han ban quyen...
+cscript //nologo %windir%\\system32\\slmgr.vbs /xpr
+echo.
+echo Hoan tat kiem tra! Nhan phim bat ky de thoat.
+pause >nul
+`;
+            const blob = new Blob([batScript], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Kiem_Tra_Ban_Quyen_Windows.bat';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showToast(i18n[currentLang].toastBatDownloaded);
+        }
+
+        function copyTextRaw(text) {
+            navigator.clipboard.writeText(text);
+            showToast(`${i18n[currentLang].toastCopied} (${text})`);
+        }
+
+        /* ================= 6. REAL NETWORK PING / LATENCY TESTER ================= */
         async function pingEndpoint(url, elementId) {
             const el = document.getElementById(elementId);
             el.className = 'ping-ms';
@@ -826,7 +1064,7 @@
             pingEndpoint('https://api.github.com', 'ping-gh');
         }
 
-        /* ================= 6. DEV TOOLBOX UTILITIES ================= */
+        /* ================= 7. DEV TOOLBOX UTILITIES ================= */
         function switchToolTab(toolName) {
             ['json', 'base64', 'hash', 'radix'].forEach(t => {
                 document.getElementById(`tool-${t}`).classList.toggle('hidden', t !== toolName);
@@ -902,10 +1140,12 @@
             setTimeout(() => t.classList.remove('show'), 2600);
         }
 
-        /* ================= 7. COMMAND PALETTE (CTRL + K) ================= */
+        /* ================= 8. COMMAND PALETTE (CTRL + K) ================= */
         function getCommands() {
             const d = i18n[currentLang];
             return [
+                { icon: 'fa-file-arrow-down', label: d.cmdLicBat, action: () => downloadLicenseCheckBat() },
+                { icon: 'fa-shield-halved', label: d.cmdLicXpr, action: () => copyTextRaw('slmgr /xpr') },
                 { icon: 'fa-gauge-high', label: d.cmdPing, action: () => runPingTests() },
                 { icon: 'fa-code', label: d.cmdJson, action: () => switchToolTab('json') },
                 { icon: 'fa-lock', label: d.cmdB64, action: () => switchToolTab('base64') },
@@ -968,7 +1208,7 @@
             }
         });
 
-        /* ================= 8. PWA REGISTRATION ================= */
+        /* ================= 9. PWA REGISTRATION ================= */
         let deferredPrompt;
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
@@ -998,3 +1238,5 @@
     </script>
 </body>
 </html>
+
+```
